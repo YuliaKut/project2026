@@ -3,87 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team</title>
+    <title> Il Tesoro dei Medici</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        .navbar {
-            background-color: #1a1a1a;
-            height: 50px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 999;
-            border-bottom: 5px solid #006400; /* зеленый цвет темного оттенка */
-        }
-        .navbar a {
-            color: #fff;
-            font-size: 16px;
-            text-decoration: none;
-            margin-right: 20px;
-            display: inline-block;
-            line-height: 50px;
-            padding: 0 10px;
-        }
-        .navbar a:hover {
-            color: #00ff00;
-        }
-        .content {
-            margin-top: 60px; /* чтобы контент не перекрывал верхнюю полосу */
-            text-align: center;
-            padding: 0 1cm; /* отступы от краев */
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #faf9f7;
+            color: #1e1e1e;
         }
         h1 {
-            font-weight: bold;
-            color: #000;
+            font-size: 2.2rem;
+            border-bottom: 3px solid #8b1a1a;
+            padding-bottom: 10px;
+            color: #4a0e0e;
         }
-        .info-table {
-            margin: 20px auto;
-            border-collapse: collapse;
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            color: #5c2e2e;
+            border-left: 5px solid #b8860b;
+            padding-left: 15px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            color: #3a3a3a;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+        .event-meta {
+            background-color: #ece8e0;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 6px solid #b8860b;
+            margin: 20px 0;
+        }
+        table {
             width: 100%;
-        }
-        .info-table td {
-            padding: 10px;
-            vertical-align: top;
-        }
-        .info-table img {
-            width: auto;
-            height: 8cm;
-            object-fit: contain;
-        }
-        .info-table p {
-            text-align: justify;
-            margin: 0 0 10px 0; /* отступы между абзацами */
-        }
-        .steps-paragraph {
-            text-align: justify;
-        }
-        .step-table {
-            margin: 20px auto;
             border-collapse: collapse;
-            width: 100%;
-            border: 2px solid #000; /* черная рамка */
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
-        .step-table td {
-            padding: 10px;
-            vertical-align: top;
-            border: 1px solid #000; /* черная рамка внутри ячеек */
-        }
-        .step-table img {
-            width: auto;
-            height: 8cm;
-            object-fit: contain;
-        }
-        .step-table p {
-            text-align: justify;
-            margin: 0 0 10px 0; /* отступы между абзацами */
-        }
-        .left-align {
+        th {
+            background-color: #4a2c2c;
+            color: #f5f0e8;
+            padding: 12px 10px;
             text-align: left;
+            font-weight: 600;
+        }
+        td {
+            border: 1px solid #d4cdc2;
+            padding: 10px;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f5f0;
+        }
+        tr:hover {
+            background-color: #f0ebe2;
+        }
+        .code-block {
+            background-color: #1e1e1e;
+            color: #e0d6c0;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin: 1rem 0;
+            border-left: 5px solid #b8860b;
+        }
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+        .link-list li {
+            margin-bottom: 0.5rem;
+            padding: 8px 12px;
+            background-color: #f1ede6;
+            border-radius: 5px;
+            border-left: 4px solid #b8860b;
+        }
+        .link-list a {
+            color: #6b2e2e;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-list a:hover {
+            text-decoration: underline;
+            color: #8b1a1a;
+        }
+        .summary-box {
+            background-color: #e8e2d8;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #c9bdb0;
+        }
+        .summary-box strong {
+            color: #4a2c2c;
+        }
+        hr {
+            border: 1px solid #d4cdc2;
+            margin: 2rem 0;
+        }
+        .footer-note {
+            font-style: italic;
+            color: #5a4f44;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            border-top: 1px solid #d4cdc2;
+            padding-top: 1rem;
+        }
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            h1 { font-size: 1.8rem; }
+            .code-block { font-size: 0.75rem; padding: 12px; }
+            table { font-size: 0.85rem; }
+            td, th { padding: 6px; }
         }
     </style>
 </head>
@@ -92,8 +139,8 @@
         <a href="index.html">Homepage</a>
         <a href="Lola.html">Daria</a>
         <a href="iuliia.html">Iuliia</a>
-        <a href="Marina.html">AMarina</a>
-    
+        <a href="Marina.html">Marina</a>
+     
         <a href="report.html">Report</a>
     </div>
     <div class="content">
