@@ -188,7 +188,7 @@ LIMIT 100</div>
     <h3>Query 2: Describe Event IRI</h3>
     <div class="code-block">PREFIX cis: &lt;https://w3id.org/arco/resource/CulturalEvent/&gt;
 DESCRIBE cis:4c88dc5e0662f98f9c0ff26a0b51e4d3</div>
-    <p><strong>Description:</strong> The first thing needed to be done is to determine the information about my event that is already present in the ArCo. Exploring the KG's ontology, we are able to identify and use classes and properties that can be used to model a needed query. The task can be done in a couple of ways. For instance, on the left I have provided a SPARQL query requesting all the information available about the event in the form of microdata document. Along with the place, name (rdfs:label OR l0:name) and the date (tiapit:time) of my event, I have successfully found the information about the type of the event (rdf:type) and a cultural entity involved – unfortunately, only one entity is presented in the microdata document (cis:involvesCulturalEntity) (<a href="#">link 3</a>).</p>
+    <p><strong>Description:</strong> The first thing needed to be done is to determine the information about my event that is already present in the ArCo. Exploring the KG's ontology, we are able to identify and use classes and properties that can be used to model a needed query. The task can be done in a couple of ways. For instance, on the left I have provided a SPARQL query requesting all the information available about the event in the form of microdata document. Along with the place, name (rdfs:label OR l0:name) and the date (tiapit:time) of my event, I have successfully found the information about the type of the event (rdf:type) and a cultural entity involved – unfortunately, only one entity is presented in the microdata document (cis:involvesCulturalEntity) (<a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+cis%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FCulturalEvent%2F%3E%0D%0ADESCRIBE+cis%3A4c88dc5e0662f98f9c0ff26a0b51e4d3&format=text%2Fhtml&timeout=0&signal_void=on">link 3</a>).</p>
     <p>However, by comparing the events held in different cities, we can assume that for each of them the pieces of information indicated are these:
         <ul>
             <li><strong>a)</strong> name of the event (rdfs:label OR l0:name);</li>
@@ -213,7 +213,7 @@ WHERE {
     <p><strong>Description:</strong> However, I wanted to focus on two specific missing things for my event. When I have checked via SPARQL whether they exist, the answer from ArCo made it clear they are not presented in the KG. Those things are as following:<br>
         <strong>a)</strong> what museum held my event in Moscow (e.g., through clv:hasSpatialCoverage) – no response, empty table;<br>
         <strong>b)</strong> who has organised my event (e.g., through "arco:hasEventOrganiser ?organiser") – no response, empty table.</p>
-    <p>Checking the results with the SPARQL query that allows us to see all the features of the specific event (provided on the left, plus see <a href="#">link 4</a>), we receive the proof ArCo misses the specific place of the event and its organisers. Those are the problems we are focusing on.</p>
+    <p>Checking the results with the SPARQL query that allows us to see all the features of the specific event (provided on the left, plus see <a href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+%3Fproperty+%3Fvalue+%3FvalueLabel%0D%0A%0D%0AWHERE+%7B%0D%0A%0D%0A%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FCulturalEvent%2F4c88dc5e0662f98f9c0ff26a0b51e4d3%3E%0D%0A%3Fproperty+%3Fvalue+.%0D%0A%0D%0AOPTIONAL+%7B%0D%0A++%3Fvalue+rdfs%3Alabel+%3FvalueLabel+.%0D%0A%7D%0D%0A%0D%0A%7D&format=text%2Fhtml&timeout=0&signal_void=on">link 4</a>), we receive the proof ArCo misses the specific place of the event and its organisers. Those are the problems we are focusing on.</p>
 </section>
 
 <!-- AI Tools & Prompting -->
@@ -227,6 +227,7 @@ WHERE {
         "Provide me with necessary information on 'Il Tesoro dei Medici'. Provide me with the answer as following: 1) the date of the event; 2) the place of the event – country, city, museum; 3) the organisers of the event. The date of the event is being asked to avoid the possibility of events with the same name appearing."
     </div>
       <img src="tesoro2.jpg" alt="menologio" width="1000" height="600">
+      <img src="tesoro3.jpg" alt="menologio" width="1000" height="600">
 
     <h3>Step 2: Answers</h3>
     <ul>
@@ -236,15 +237,15 @@ WHERE {
     <div class="summary-box">
         <p><strong>Conclusion:</strong> ChatGPT, although adding too much context to its replies, is a more reliable LLM and will be used for this project. For less reliable AI tools, more detailed engineering of the initial prompt is required. It includes providing more information about the event in the prompt, hence avoiding the target event being mixed up with any other one holding the same name.</p>
     </div>
-      <img src="tesoro3.jpg" alt="menologio" width="1000" height="600">
+ 
 </section>
 
-<!-- Enrichment Triples -->
+<!-- Enrichment Triplets -->
 <section>
-    <h2>4. Enriching ArCo Ontology with New Triples</h2>
+    <h2>4. Enriching ArCo Ontology with New Triplets</h2>
 
-    <!-- Triple A -->
-    <h3>Triple A: Spatial Coverage (Museum)</h3>
+    <!-- Triplet A -->
+    <h3>Triplet A: Spatial Coverage (Museum)</h3>
     <div class="code-block">https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3
 clv:hasSpatialCoverage
 https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino</div>
@@ -254,8 +255,8 @@ https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5
     <strong>New triplet:</strong> Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums.</p>
     <p>The SPARQL query through the ArCo ontology and ChatGPT is provided on the left.</p>
 
-    <!-- Triple B -->
-    <h3>Triple B: Event Organiser</h3>
+    <!-- Triplet B -->
+    <h3>Triplet B: Event Organiser</h3>
     <div class="code-block">https://w3id.org/arco/resource/CulturalInstituteOrSite/DBunicoCG20403
 event:isEventOrganiserof
 https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</div>
@@ -269,7 +270,7 @@ https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</d
 
 <!-- Summary -->
 <section>
-    <h2>5. Summary: Enriched Triples</h2>
+    <h2>5. Summary: Enriched Triplets</h2>
     <div class="summary-box">
         <p><strong>To sum up</strong>, using AI tools and the ontology of ArCo, we were able not only to investigate the weak points of the knowledge graph and lack of specific pieces of information, but also to successfully solve these problems, thus enriching the ArCo's ontology with two new triplets:</p>
         <ul>
