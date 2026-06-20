@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Il Tesoro dei Medici</title>
+    <title>Menologio Icon – KE4H Project</title>
     <style>
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -14,6 +14,35 @@
             background-color: #faf9f7;
             color: #1e1e1e;
         }
+        /* Navigation Bar */
+        .navbar {
+            background-color: #4a2c2c;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .navbar a {
+            color: #f5f0e8;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 500;
+        }
+        .navbar a:hover {
+            background-color: #b8860b;
+            color: white;
+            transform: scale(1.05);
+        }
+        .navbar a.active {
+            background-color: #b8860b;
+            color: white;
+        }
+        
         h1 {
             font-size: 2.2rem;
             border-bottom: 3px solid #8b1a1a;
@@ -31,6 +60,12 @@
             font-size: 1.3rem;
             margin-top: 1.5rem;
             color: #3a3a3a;
+            font-weight: 600;
+        }
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1.2rem;
+            color: #4a2c2c;
             font-weight: 600;
         }
         p {
@@ -83,6 +118,19 @@
             margin: 1rem 0;
             border-left: 5px solid #b8860b;
         }
+        .code-block-light {
+            background-color: #f0ebe2;
+            color: #1e1e1e;
+            padding: 18px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin: 1rem 0;
+            border-left: 5px solid #4a2c2c;
+        }
         .link-list {
             list-style: none;
             padding: 0;
@@ -113,6 +161,20 @@
         .summary-box strong {
             color: #4a2c2c;
         }
+        .comparison-box {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .comparison-box > div {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f1ede6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #b8860b;
+        }
         hr {
             border: 1px solid #d4cdc2;
             margin: 2rem 0;
@@ -124,6 +186,37 @@
             font-size: 0.95rem;
             border-top: 1px solid #d4cdc2;
             padding-top: 1rem;
+            text-align: center;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #8b1a1a;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .badge-success {
+            background-color: #2d6a2d;
+        }
+        .entity-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+        .entity-list li {
+            background-color: #ece8e0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #b8860b;
+            font-size: 0.9rem;
         }
         @media (max-width: 600px) {
             body { padding: 12px; }
@@ -131,23 +224,307 @@
             .code-block { font-size: 0.75rem; padding: 12px; }
             table { font-size: 0.85rem; }
             td, th { padding: 6px; }
+            .comparison-box { flex-direction: column; }
+            .navbar { flex-direction: column; align-items: center; }
+            .navbar a { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ===== NAVIGATION ===== -->
     <div class="navbar">
-        <a href="index.html">Homepage</a>
+        <a href="index.html">🏠 Homepage</a>
         <a href="Lola.html">Daria</a>
         <a href="iuliia.html">Iuliia</a>
         <a href="Marina.html">Marina</a>
-     
-        <a href="report.html">Report</a>
+        <a href="report.html">📄 Report</a>
     </div>
+
+    <!-- ===== MAIN CONTENT ===== -->
     <div class="content">
-        <h1>Iuliia</h1>
-        <h1>Menologio</h1>
-           <span>This two-paneled Menologio icon is one of the most notable works in the historic collection of 78 Russian icons acquired by the Medici family . It functions as a visual liturgical calendar of the Orthodox Church, divided into two panels corresponding to the two halves of the year .
-The icon was created in a provincial Russian workshop between 1730–1750, modeled on an annual series of saints engraved in Moscow in 1730 . The most important Christian feast, the Resurrection of Christ, appears prominently in both panels at the top center . The Menologio came to Florence during the Habsburg-Lorraine dynasty and is now permanently displayed at the Palazzo Pitti museum, which opened in early 2022.</span>
-       
-        <img src="menologio.jpg.webp" alt="menologio" width="1000" height="600">
-        
+
+        <h1>🕊️ Menologio Icon – Project Documentation</h1>
+
+        <!-- ===== OVERVIEW ===== -->
+        <section>
+            <h2>1. Icon Overview</h2>
+            <div class="event-meta">
+                <p><strong>Menologio</strong> — This two-paneled Menologio icon is one of the most notable works in the historic collection of <strong>78 Russian icons</strong> acquired by the Medici family. It functions as a visual liturgical calendar of the Orthodox Church, divided into two panels corresponding to the two halves of the year.</p>
+                <p>The icon was created in a provincial Russian workshop between <strong>1730–1750</strong>, modeled on an annual series of saints engraved in Moscow in 1730. The most important Christian feast, the <strong>Resurrection of Christ</strong>, appears prominently in both panels at the top center.</p>
+                <p>The Menologio came to Florence during the <strong>Habsburg-Lorraine dynasty</strong> and is now permanently displayed at the <strong>Palazzo Pitti</strong> museum, which opened in early 2022.</p>
+            </div>
+        </section>
+
+        <!-- ===== SPARQL QUERIES ===== -->
+        <section>
+            <h2>2. SPARQL Queries & Results</h2>
+
+            <h3>Step 1: Query to Identify Menologio Icon in ArCo</h3>
+            <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco-arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+
+SELECT ?icon ?label WHERE {
+  ?icon a/rdfs:subClassOf* arco-arco:CulturalProperty . 
+  ?icon rdfs:label ?label .
+  FILTER(REGEX(?label, "menologio", "i"))
+}</div>
+            <p><strong>Result:</strong> Menologio icon found in the ArCo database.</p>
+            <ul class="link-list">
+                <li><a href="#" target="_blank" rel="noopener noreferrer">🔗 Link to ArCo Resource</a></li>
+            </ul>
+
+            <h3>Step 2: Identifying the Gaps in the Knowledge</h3>
+            <div class="code-block">PREFIX arco-location: &lt;https://w3id.org/arco/ontology/location/&gt;
+
+SELECT ?site ?siteLabel ?locationType WHERE {
+  &lt;THE_ICON_URI&gt; arco-location:hasTimeIndexedTypedLocation ?location .
+  ?location arco-location:atSite ?site .
+  ?site rdfs:label ?siteLabel .
+  OPTIONAL { ?location arco-location:hasLocationType ?locationType . }
+}</div>
+            
+            <div class="summary-box">
+                <p><strong>❌ Missing Information Found:</strong></p>
+                <ul>
+                    <li><span class="badge">EMPTY</span> Current location of the painting is <strong>not indicated</strong></li>
+                    <li><span class="badge">EMPTY</span> No information about the museum housing the icon</li>
+                    <li><span class="badge">EMPTY</span> No provenance information</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== LLM COMPARISON ===== -->
+        <section>
+            <h2>3. Enrichment Using LLM Models</h2>
+            <p>Comparing responses from different AI models using zero-shot and few-shot prompting.</p>
+
+            <h3>DeepSeek (Zero-Shot Prompting)</h3>
+            <div class="code-block-light">
+                <strong>Prompt:</strong> "where is menologio icon located"
+            </div>
+            <div class="summary-box">
+                <p><strong>Response:</strong></p>
+                <p>The specific "Menologio" icon is located in <strong>Florence, Italy</strong>. It is part of a historic collection of Russian icons housed in the <strong>Palazzo Pitti</strong>.</p>
+                <p>The collection is known as the <strong>Museo delle Icone Russe</strong> (Museum of Russian Icons), and it is the oldest and most important collection of its kind outside of Russia. The Menologio itself consists of two large panels (each 70 x 54 cm) that together form a liturgical calendar of the Orthodox Church.</p>
+                <p><strong>Other Important Menologia:</strong></p>
+                <ul>
+                    <li><strong>Vatican Museums:</strong> "Capponi tablets" – five small icons</li>
+                    <li><strong>St. Catherine's Monastery, Mount Sinai, Egypt:</strong> Two Byzantine Menologia from the 11th–12th centuries</li>
+                </ul>
+            </div>
+
+            <h3>ChatGPT (Zero-Shot Prompting)</h3>
+            <div class="code-block-light">
+                <strong>Prompt:</strong> "where is menologio icon located"
+            </div>
+            <div class="summary-box">
+                <p><strong>Response (Initial):</strong></p>
+                <p>Could you clarify what you mean by "Menologio icon"?<br>
+                Is Menologio an app on your phone?<br>
+                Are you asking where its icon is located on an iPhone or Android home screen?<br>
+                Or are you referring to the historical/religious term Menologio?</p>
+                <p><strong>Response (After Clarification):</strong></p>
+                <p>A menologion is primarily a liturgical calendar or collection of saints' lives arranged by month. The most famous example is the <strong>Menologion of Basil II</strong>, created around the year 1000, currently preserved in the <strong>Vatican Apostolic Library</strong>.</p>
+            </div>
+
+            <h3>ChatGPT (Few-Shot Prompting)</h3>
+            <div class="code-block-light">
+                <strong>Prompt:</strong> "Can you extract exact cultural entities from this description? give me a list and nothing more."
+            </div>
+            <div class="summary-box">
+                <p><strong>Response (First attempt – too many entities):</strong></p>
+                <ul>
+                    <li>Menologio (Palazzo Pitti, Florence)</li>
+                    <li>Museo delle Icone Russe (Palazzo Pitti, Florence)</li>
+                    <li>The "Capponi tablets" (Vatican Museums)</li>
+                    <li>Vatican Museums (Vatican City)</li>
+                    <li>St. Catherine's Monastery (Mount Sinai, Egypt)</li>
+                    <li>Florence, Italy</li>
+                    <li>Vatican City</li>
+                    <li>Mount Sinai, Egypt</li>
+                    <li>Russia</li>
+                    <li>18th century</li>
+                    <li>11th century</li>
+                    <li>12th century</li>
+                </ul>
+            </div>
+            <div class="summary-box">
+                <p><strong>Response (Corrected – only first part):</strong></p>
+                <ul class="entity-list">
+                    <li>Menologio icon</li>
+                    <li>Palazzo Pitti</li>
+                    <li> Florence, Italy</li>
+                    <li> Museo delle Icone Russe</li>
+                    <li> Russia</li>
+                    <li> Orthodox Church</li>
+                </ul>
+            </div>
+
+            <div class="summary-box">
+                <p><strong> Conclusion:</strong> Few-shot prompting with specific formatting instructions yields more precise and relevant results. DeepSeek provided comprehensive information on the first try, while ChatGPT required clarification and correction.</p>
+            </div>
+        </section>
+
+        <!-- ===== RDF ENRICHMENT ===== -->
+        <section>
+            <h2>4. RDF Enrichment (ArCo Ontology)</h2>
+            <p>Transforming the found information into RDF format using ArCo ontology.</p>
+
+            <div class="code-block">@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
+@prefix a-dd: &lt;https://w3id.org/arco/ontology/denotative-description/&gt; .
+@prefix a-loc: &lt;https://w3id.org/arco/ontology/location/&gt; .
+@prefix cidoc: &lt;http://www.cidoc-crm.org/cidoc-crm/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;https://w3id.org/arco/resource/MenologioPalazzoPitti&gt;
+    a arco:MovableCulturalProperty ;
+    rdfs:label "Menologio icon"@en ;
+    arco:hasType a-dd:CulturalPropertyType ;
+    a-dd:hasDesignationType [
+        a a-dd:DesignationInTime ;
+        rdfs:label "Liturgical calendar"@en ;
+        a-dd:hasTitle "Menologio"@en
+    ] ;
+    a-dd:hasDescription "Two large panels (each 70 x 54 cm) forming a full Orthodox liturgical calendar covering the year from September to August"@en ;
+    a-dd:hasDimension [
+        a a-dd:Dimension ;
+        a-dd:hasValue "70 x 54 cm"^^xsd:string ;
+        a-dd:hasMeasurementUnit "centimeters"@en
+    ] ;
+    a-loc:hasTimeIndexedTypedLocation [
+        a a-loc:TimeIndexedTypedLocation ;
+        a-loc:hasLocationType a-loc:CurrentLocation ;
+        a-loc:hasGeometry [
+            a a-loc:Geometry ;
+            a-loc:hasCoordinates "43.7651, 11.2499"^^xsd:string ;
+            a-loc:hasAddress "Palazzo Pitti, Florence, Italy"@en
+        ]
+    ] ;
+    core:isHousedIn [
+        a arco:ImmovableCulturalProperty ;
+        rdfs:label "Palazzo Pitti"@en ;
+        a-loc:hasTimeIndexedTypedLocation [
+            a a-loc:TimeIndexedTypedLocation ;
+            a-loc:hasLocationType a-loc:CurrentLocation ;
+            a-loc:hasGeometry [
+                a a-loc:Geometry ;
+                a-loc:hasAddress "Florence, Italy"@en
+            ]
+        ]
+    ] ;
+    core:isRelatedTo [
+        a a-dd:Collection ;
+        rdfs:label "Museo delle Icone Russe"@en ;
+        a-dd:hasDescription "The oldest and most important collection of Russian icons outside of Russia"@en ;
+        core:hasCulturalContext [
+            a core:Context ;
+            rdfs:label "Russian Orthodox Church"@en
+        ]
+    ] ;
+    a-dd:hasCulturalContext [
+        a core:Context ;
+        rdfs:label "Orthodox Church"@en ;
+        rdfs:comment "The liturgical tradition to which the Menologio belongs"@en
+    ] .</div>
+
+            <div class="summary-box">
+                <p><strong>📌 Enriched Data Added:</strong></p>
+                <ul>
+                    <li>✅ <strong>Location:</strong> Palazzo Pitti, Florence, Italy</li>
+                    <li>✅ <strong>Coordinates:</strong> 43.7651, 11.2499</li>
+                    <li>✅ <strong>Dimensions:</strong> 70 x 54 cm</li>
+                    <li>✅ <strong>Collection:</strong> Museo delle Icone Russe</li>
+                    <li>✅ <strong>Cultural Context:</strong> Orthodox Church, Russian Orthodox Church</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== SPREADSHEET ===== -->
+        <section>
+            <h2> 5. Project Spreadsheet Data</h2>
+            <p>Structured data from the KE4H project spreadsheet.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Action</th>
+                            <th>Description</th>
+                            <th>Results</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Step 1</strong></td>
+                            <td>SPARQL Query</td>
+                            <td>Identify Menologio icon in ArCo</td>
+                            <td>✅ Icon found in database</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Step 2</strong></td>
+                            <td>Identify Gaps</td>
+                            <td>Check for location information</td>
+                            <td>❌ No location data present</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Step 3</strong></td>
+                            <td>Zero-Shot (DeepSeek)</td>
+                            <td>Ask for location information</td>
+                            <td>✅ Palazzo Pitti, Florence, Italy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Step 3</strong></td>
+                            <td>Zero-Shot (ChatGPT)</td>
+                            <td>Ask for location information</td>
+                            <td>⚠️ Required clarification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Step 3</strong></td>
+                            <td>Few-Shot (ChatGPT)</td>
+                            <td>Extract entities with formatting</td>
+                            <td>✅ 6 key entities identified</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Step 4</strong></td>
+                            <td>RDF Enrichment</td>
+                            <td>Transform data to ArCo ontology</td>
+                            <td>✅ Complete RDF triplets created</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== SUMMARY ===== -->
+        <section>
+            <h2>6. Summary</h2>
+            <div class="summary-box">
+                <p><strong>✅ Project completed successfully.</strong></p>
+                <ul>
+                    <li>Menologio icon identified in ArCo database</li>
+                    <li>Missing location information identified</li>
+                    <li>LLM models used to find missing data</li>
+                    <li>DeepSeek provided accurate information on first attempt</li>
+                    <li>ChatGPT required clarification and few-shot prompting</li>
+                    <li>RDF triplets created using ArCo ontology</li>
+                    <li>All enriched data ready for integration</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr>
+
+        <div class="footer-note">
+            <p>📄 KE4H Project – Cultural Heritage and Semantic Web<br>
+            <strong>Icon:</strong> Menologio (Palazzo Pitti, Florence, Italy)<br>
+            <strong>ArCo Resource:</strong> <a href="#" target="_blank" rel="noopener noreferrer">View in ArCo</a></p>
+        </div>
+
+    </div> <!-- end content -->
+
+</body>
+</html>
