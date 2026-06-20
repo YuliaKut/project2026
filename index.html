@@ -23,18 +23,20 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            justify-content: center;
         }
         .navbar a {
             color: #f5f0e8;
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 8px 20px;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             font-weight: 500;
         }
         .navbar a:hover {
             background-color: #b8860b;
             color: white;
+            transform: scale(1.05);
         }
         .navbar a.active {
             background-color: #b8860b;
@@ -46,6 +48,7 @@
             border-bottom: 3px solid #8b1a1a;
             padding-bottom: 10px;
             color: #4a0e0e;
+            text-align: center;
         }
         h2 {
             font-size: 1.8rem;
@@ -60,16 +63,72 @@
             color: #3a3a3a;
             font-weight: 600;
         }
-        h4 {
-            font-size: 1.1rem;
-            margin-top: 1.2rem;
-            color: #4a2c2c;
-            font-weight: 600;
-        }
         p {
             margin-bottom: 1.2rem;
             text-align: justify;
         }
+        
+        /* Team Members Section */
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0 40px 0;
+        }
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ece8e0;
+            padding: 20px 30px 15px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #d4cdc2;
+            min-width: 150px;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #b8860b;
+            margin-bottom: 12px;
+        }
+        .team-member .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a2c2c;
+        }
+        .team-member .member-name a {
+            color: #4a2c2c;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .team-member .member-name a:hover {
+            color: #b8860b;
+        }
+        
+
+        .intro-text {
+            text-align: center;
+            background-color: #ece8e0;
+            padding: 30px 20px;
+            border-radius: 12px;
+            border-left: 6px solid #b8860b;
+            margin: 20px 0 30px 0;
+        }
+        .intro-text p {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #3a3a3a;
+        }
+        
         .event-meta {
             background-color: #ece8e0;
             padding: 15px 20px;
@@ -116,19 +175,6 @@
             margin: 1rem 0;
             border-left: 5px solid #b8860b;
         }
-        .code-block-light {
-            background-color: #f0ebe2;
-            color: #1e1e1e;
-            padding: 18px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-all;
-            margin: 1rem 0;
-            border-left: 5px solid #4a2c2c;
-        }
         .link-list {
             list-style: none;
             padding: 0;
@@ -159,20 +205,6 @@
         .summary-box strong {
             color: #4a2c2c;
         }
-        .comparison-box {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-        .comparison-box > div {
-            flex: 1;
-            min-width: 250px;
-            background-color: #f1ede6;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #b8860b;
-        }
         hr {
             border: 1px solid #d4cdc2;
             margin: 2rem 0;
@@ -184,42 +216,41 @@
             font-size: 0.95rem;
             border-top: 1px solid #d4cdc2;
             padding-top: 1rem;
+            text-align: center;
         }
         .table-container {
             overflow-x: auto;
             margin: 20px 0;
         }
-        .badge {
-            display: inline-block;
-            background-color: #8b1a1a;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
+        
         @media (max-width: 600px) {
             body { padding: 12px; }
             h1 { font-size: 1.8rem; }
             .code-block { font-size: 0.75rem; padding: 12px; }
             table { font-size: 0.85rem; }
             td, th { padding: 6px; }
-            .comparison-box { flex-direction: column; }
             .navbar { flex-direction: column; align-items: center; }
             .navbar a { width: 100%; text-align: center; }
+            .team-member img { width: 80px; height: 80px; }
+            .team-members { gap: 20px; }
         }
     </style>
 </head>
 <body>
+
     <div class="navbar">
-        <a href="index.html">Homepage</a>
+        <a href="index.html">🏠 Homepage</a>
         <a href="Lola.html">Daria</a>
-        <a href="iuliia.html">iuliia</a>
-        <a href="Marina.html">Marina</a>
-        <a href="report.html">Report</a>
+        <a href="iuliia.html">Iuliia</a>
+        <a href="Marina.html" class="active">Marina</a>
+        <a href="report.html">📄 Report</a>
     </div>
+
+
     <div class="content">
-        <h1>OUR TEAM</h1>
+
+        <h1>👥 Our Team</h1>
+
         <div class="team-members">
             <div class="team-member">
                 <img src="Daria.jpg" alt="Daria">
@@ -227,17 +258,23 @@
             </div>
             <div class="team-member">
                 <img src="iuliia.jpg" alt="Iuliia">
-                <div class="member-name"><a href="iuliia.html">iuliia</a></div>
+                <div class="member-name"><a href="iuliia.html">Iuliia</a></div>
             </div>
             <div class="team-member">
                 <img src="Marina.jpg" alt="Marina">
                 <div class="member-name"><a href="Marina.html">Marina</a></div>
             </div>
-            </div>
         </div>
+
+       
         <div class="intro-text">
-            <h1 style="font-family: Arial, sans-serif;"></h1>
-            <p>Welcome!</p>
+            <h2 style="border-left: none; text-align: center; margin-top: 0;">Welcome to Our Project!</h2>
         </div>
-    </div>
+
+
+    
+
+    </div> 
+
 </body>
+</html>
