@@ -221,15 +221,10 @@
     <a href="report.html">📄 Report</a>
 </div>
 
-<!-- ===== MAIN CONTENT ===== -->
 <div class="content">
 
     <h1>🏛️ Marina — Il Tesoro dei Medici</h1>
     
-    <!-- ===== ABOUT THE PLACE ===== -->
-    <h2>About the Place</h2>
-    
-    <h3>Name of the Place</h3>
     <p><strong>Moscow, Russia — The Armoury Chamber of the Kremlin Museums</strong></p>
     
     <div class="event-meta">
@@ -239,7 +234,6 @@
         <p>A major theme of the exhibition was how the Medici used collecting as a way to express Renaissance ideals of culture, magnificence, and authority. The treasures reflected the tastes of rulers such as <strong>Cosimo I de' Medici</strong> and later members of the dynasty, including the final Medici heir <strong>Anna Maria Luisa de' Medici</strong>.</p>
     </div>
 
-    <!-- ===== SPARQL QUERIES ===== -->
     <h2>SPARQL Queries & Results</h2>
     <p>The following queries were used to explore the ArCo knowledge graph and retrieve information about cultural events in Russia.</p>
 
@@ -292,7 +286,6 @@ WHERE {
 }</div>
     <p><strong>Result:</strong> The SPARQL query confirms that ArCo misses the specific place of the event and its organisers. These are the problems we are focusing on.</p>
 
-    <!-- ===== AI TOOLS ===== -->
     <h2>Using AI Tools to Enrich the Knowledge Graph</h2>
 
     <h3>Step 1: Questions</h3>
@@ -326,7 +319,6 @@ WHERE {
         <p><strong>Conclusion:</strong> ChatGPT, although adding too much context to its replies, is a more reliable LLM and will be used for this project. For less reliable AI tools, more detailed engineering of the initial prompt is required.</p>
     </div>
 
-    <!-- ===== ENRICHMENT ===== -->
     <h2>Enriching ArCo Ontology with New Triples</h2>
 
     <h3>Triple A: Spatial Coverage (Museum)</h3>
@@ -348,7 +340,6 @@ https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</d
     <strong>OR</strong><br>
     <strong>New triplet (option 2):</strong> Il Tesoro dei Medici – hasEventOrganiser – Gallerie degli Uffizi</p>
 
-    <!-- ===== SPREADSHEET ===== -->
     <h2>📊 Project Spreadsheet Data</h2>
     <p>This table contains the structured data from the KE4H project spreadsheet.</p>
     
@@ -398,7 +389,6 @@ https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</d
         </table>
     </div>
 
-    <!-- ===== SUMMARY ===== -->
     <h2>Summary: Enriched Triples</h2>
     <div class="summary-box">
         <p><strong>To sum up</strong>, using AI tools and the ontology of ArCo, we were able not only to investigate the weak points of the knowledge graph and lack of specific pieces of information, but also to successfully solve these problems, thus enriching the ArCo's ontology with two new triplets:</p>
