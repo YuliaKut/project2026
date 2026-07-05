@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il Tesoro dei Medici</title>
+    <title>Il Tesoro dei Medici – KE4H Project</title>
     <style>
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -202,6 +202,20 @@
             padding-top: 1rem;
             text-align: center;
         }
+        .triple-list {
+            list-style: none;
+            padding: 0;
+        }
+        .triple-list li {
+            background-color: #f1ede6;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #8b1a1a;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+        }
         @media (max-width: 600px) {
             body { padding: 12px; }
             h1 { font-size: 1.8rem; }
@@ -211,6 +225,7 @@
             .comparison-box { flex-direction: column; }
             .navbar { flex-direction: column; align-items: center; }
             .navbar a { width: 100%; text-align: center; }
+            .triple-list li { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -230,37 +245,90 @@
 
         <h1>🏛️ Il Tesoro dei Medici – Project Documentation</h1>
 
-        <!-- ===== SECTION 1: OVERVIEW ===== -->
+        <!-- ===== SECTION 1: EXHIBITION OVERVIEW ===== -->
         <section>
             <h2>1. Exhibition Overview</h2>
             <div class="event-meta">
-                <p><strong>“Il Tesoro dei Medici”</strong> was an exhibition held in <strong>Moscow</strong> in 2011. It ran from <strong>20 May to 1 August 2011</strong> and was organized as part of the cultural exchanges between Italy and Russia.</p>
+                <p>"Il Tesoro dei Medici" was an exhibition held in Moscow in 2011. It ran from 20 May to 1 August 2011 and was organized as part of the cultural exchanges between Italy and Russia.</p>
                 <p>The exhibition presented the extraordinary decorative-art collection of the Medici family, the dynasty that ruled Florence and Tuscany during the Renaissance. The works came mainly from the Medici collections preserved in Florence.</p>
-                <p>The show focused not on paintings, but on the Medici passion for luxury objects and collecting, including jewellery, gold and silver works, and artistic objects that demonstrated the family’s wealth, taste, and political power.</p>
-                <p>A major theme of the exhibition was how the Medici used collecting as a way to express Renaissance ideals of culture, magnificence, and authority. The treasures reflected the tastes of rulers such as <strong>Cosimo I de' Medici</strong> and later members of the dynasty, including the final Medici heir <strong>Anna Maria Luisa de' Medici</strong>.</p>
+                <p>The show focused not on paintings, but on the Medici passion for luxury objects and collecting, including jewellery, gold and silver works, and artistic objects that demonstrated the family's wealth, taste, and political power.</p>
+                <p>A major theme of the exhibition was how the Medici used collecting as a way to express Renaissance ideals of culture, magnificence, and authority. The treasures reflected the tastes of rulers such as Cosimo I de' Medici and later members of the dynasty, including the final Medici heir Anna Maria Luisa de' Medici.</p>
             </div>
         </section>
-        <img src="tesoro.jpg" alt="brullov" width="1000" height="600">
+        
 
-        <!-- ===== SECTION 2: SPARQL QUERIES ===== -->
+        <!-- ===== SECTION 2: OBJECTIVES ===== -->
         <section>
-            <h2>2. SPARQL Queries & Results</h2>
-            <p>The following queries were used to explore the ArCo knowledge graph and retrieve information about cultural events in Russia.</p>
+            <h2>2. Objectives of the Project</h2>
+            <ul>
+                <li>1) To use LLMs such as Pi AI and ChatGPT to produce new knowledge and propose RDF triples.</li>
+                <li>2) To enrich the ArCo ontologies using the SPARQL endpoint and the LLM's output.</li>
+            </ul>
+        </section>
+
+        <!-- ===== SECTION 3: METHODOLOGY ===== -->
+        <section>
+            <h2>3. Methodology Step-by-Step</h2>
+            <ul>
+                <li>1) selecting the topic by querying the KG;</li>
+                <li>2) exploring ArCo's ontology to identify classes;</li>
+                <li>3) retrieving the existing information about our event from the KG;</li>
+                <li>4) stating the main problem to solve during the project;</li>
+                <li>5) engineering the prompts for the LLMs;</li>
+                <li>6) comparing LLMs' outputs;</li>
+                <li>7) designing new triples, thus enriching ArCo's ontology;</li>
+                <li>8) website creation and publishing.</li>
+            </ul>
+        </section>
+
+        <!-- ===== SECTION 4: CHALLENGES ===== -->
+        <section>
+            <h2>4. Challenges Faced During the Project Preparation</h2>
+
+            <div class="summary-box">
+                <p><strong>Problem:</strong> While using the LLMs to design the SPARQL-queries, it was clear that not all of them understand the ArCo ontology and use it to generate their output. Sometimes they are wrong identifying classes existing in the ArCo.</p>
+                <p><strong>Solution:</strong> To explore the ontologies myself by hand, then to teach the LLMs to use the right names of the predicates, classes, properties (e.g., instead of cis:eventOrganiser to use event:isEventOrganiserof).</p>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>Problem:</strong> The very narrow topic and missing information in ArCo – the information on the chosen topic presented in ArCo is clearly insufficient, so the ways to enrich it are many. To identify the most necessary gaps to fill was a challenge. Moreover, the event was held long time ago, so even on the Internet it is difficult to find reliable sources to check the information.</p>
+                <p><strong>Solution:</strong> To search for more sources in different languages, engineer more detailed prompts for LLMs, double-check everything; identify the priorities in order to enrich ArCo with the necessary piece of information.</p>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: SPARQL QUERIES ===== -->
+        <section>
+            <h2>5. SPARQL Queries & Results</h2>
 
             <h3>Query 1: Events in Moscow</h3>
-            <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-PREFIX clv: &lt;https://w3id.org/italia/onto/CLV/&gt;
-PREFIX cis: &lt;http://dati.beniculturali.it/cis/&gt;
+            <div class="code-block">PREFIX rdf:  &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX cis:  &lt;http://dati.beniculturali.it/cis/&gt;
+PREFIX clv:  &lt;https://w3id.org/italia/onto/CLV/&gt;
 
-SELECT *
+SELECT DISTINCT ?event ?eventLabel ?place ?placeLabel
 WHERE {
-  ?place a cis:GeographicalFeature ;
-         rdfs:label "Mosca" .
-  ?event a cis:CulturalEvent ;
-         clv:hasSpatialCoverage ?place ;
-         rdfs:label ?eventLabel
+
+  {
+    ?event rdf:type cis:CulturalEvent .
+  }
+  UNION
+  {
+    ?event a cis:CulturalEvent .
+  }
+
+  ?event clv:hasSpatialCoverage ?place .
+
+  ?place rdfs:label ?placeLabel .
+
+  FILTER(REGEX(LCASE(STR(?placeLabel)), "mosca"))
+
+  OPTIONAL {
+    ?event rdfs:label ?eventLabel .
+  }
+
 }
-ORDER BY DESC(?eventLabel)
+ORDER BY ?eventLabel
 LIMIT 100</div>
             <p><strong>Description:</strong> Since we have decided to work on the events combining Russian and Italian cultural heritage, the initial first step is choosing an event.</p>
             <p>The main cities to consider in Russia are Moscow and Saint-Petersburg. The query for Saint-Petersburg (rdfs:label "Pietroburgo") has shown only one event (link 1) held in 1902, while the query for Moscow (rdfs:label "Mosca") has shown much more options (link 2). My choice was "Il Tesoro dei Medici", 2011, since a) it is a modern event and it is easier to find relevant information about it; b) ... .</p>
@@ -286,59 +354,142 @@ DESCRIBE cis:4c88dc5e0662f98f9c0ff26a0b51e4d3</div>
 
             <h3>Query 3: All Properties of the Event</h3>
             <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+
 SELECT ?property ?value ?valueLabel
+
 WHERE {
-  &lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt;
-    ?property ?value .
-  OPTIONAL {
-    ?value rdfs:label ?valueLabel .
-  }
-}</div>
+
+&lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt;
+?property ?value .
+
+OPTIONAL {
+  ?value rdfs:label ?valueLabel .
+}
+
+}
+
+ORDER BY ?valueLabel
+LIMIT 100</div>
             <p><strong>Description:</strong> However, I wanted to focus on two specific missing things for my event. When I have checked via SPARQL whether they exist, the answer from ArCo made it clear they are not presented in the KG. Those things are as following:
                 <br><strong>a)</strong> what museum held my event in Moscow (e.g., through clv:hasSpatialCoverage) – no response, empty table;
                 <br><strong>b)</strong> who has organised my event (e.g., through "arco:hasEventOrganiser ?organiser") – no response, empty table.</p>
             <p>Checking the results with the SPARQL-query that allows us to see all the features of the specific event (provided on the left, plus see <a href="#">link 4</a>), we receive the proof ArCo misses the specific place of the event and its organisers. Those are the problems we are focusing on.</p>
         </section>
 
-        <!-- ===== SECTION 3: AI TOOLS ===== -->
+        <!-- ===== SECTION 6: LLM COMPARISON ===== -->
         <section>
-            <h2>3. Using AI Tools to Enrich the Knowledge Graph</h2>
+            <h2>6. Using AI Tools to Enrich the Knowledge Graph</h2>
 
             <h3>Step 1: Questions</h3>
+            <p>The next step is to ask the AI tools to provide us with all the necessary information. We use ChatGPT, since it is one of the most versatile conversational and "reliable" AI tool. Nevertheless, we will be comparing ChatGPT's responses to those of Pi AI known as "the first emotionally intelligent AI", as indicated on its website.</p>
+            <p>We will use three prompting techniques:</p>
+
+            <h4>1) Zero-shot</h4>
             <div class="code-block-light">
                 <strong>Prompt for the LLMs:</strong><br>
-                "Provide me with necessary information on 'Il Tesoro dei Medici'. Provide me with the answer as following: 1) the date of the event; 2) the place of the event – country, city, museum; 3) the organisers of the event. The date of the event is being asked to avoid the possibility of events with the same name appearing."
+                Provide me with necessary information on the cultural event "Il Tesoro dei Medici".
+            </div>
+
+            <h4>2) Few-shot</h4>
+            <div class="code-block-light">
+                <strong>Prompt for the LLMs:</strong><br>
+                Provide me with necessary information on the cultural event "Il Tesoro dei Medici".<br><br>
+                For example:<br>
+                Input 1:<br>
+                Provide me with necessary information on the cultural event "Through the Centuries From Giotto to Malevich".<br><br>
+                Output 1:<br>
+                Name of the event: "Through the Centuries From Giotto to Malevich"<br>
+                Date: 2005<br>
+                Place: Russia, Moscow, The Kremlin Museums<br>
+                Organisers: The Ministry of Foreign affairs, "Museo Puškin delle belle arti"<br><br>
+                Input 2:<br>
+                Provide me with necessary information on the cultural event "The Unknown Schukin".<br><br>
+                Output 2:<br>
+                Name of the event: "The Unknown Schukin"<br>
+                Date: 2025-2026<br>
+                Place: Russia, Moscow, The Kremlin Museums<br>
+                Organisers: The Gallery of European Art
+            </div>
+
+            <h4>3) Chain-of-thought (Few-Shot CoT)</h4>
+            <div class="code-block-light">
+                <strong>Prompt for the LLMs:</strong><br>
+                Provide me with necessary information on the cultural event "Il Tesoro dei Medici".<br><br>
+                For example:<br><br>
+                Input:<br>
+                Provide me with necessary information on the cultural event "Through the Centuries From Giotto to Malevich".<br><br>
+                Output:<br>
+                The event "Through the Centuries From Giotto to Malevich". The most basic information about any event is the date and the place of it. Thus, the date of the event was May 2011 – there is the source [the source]. Then, the event, according to [this source], was held in Russia, Moscow, in the Kremlin Museums. Another vital point needed to be considered while investigating an event is the organisers of it. For the currently explored event, the organisers are The Ministry of Foreign affairs and the "Museo Puškin delle belle arti" [the source].<br>
+                Let's think step by step.
             </div>
 
             <h3>Step 2: Answers</h3>
+
+            <h4>1) Zero-shot</h4>
             <div class="comparison-box">
                 <div>
                     <h4 style="margin-top:0;">🤖 ChatGPT</h4>
-                    <p><strong>Response:</strong> (pic. 1) Despite the format prompting, the LLM has given a lot of context on the event, thus "opening a dialogue" with the user. However, the tool managed to provide with necessary information, immediately indicating reliable sources.</p>
+                    <p>the tool managed to provide with almost all the information found about the event that cannot directly be categorized as "necessary". The model has also indicated the sources (pic. 1).</p>
                 </div>
                 <div>
                     <h4 style="margin-top:0;">🟣 Pi AI</h4>
-                    <p><strong>Response:</strong> (pic. 2) The tool has not proven to be "the first emotionally intelligent AI" since it lacks the hooks to encourage communication with the user. What is even more important, is the fact of Pi AI providing <strong>false information</strong> about the event, not considering the possibility of several events with the same name existing.</p>
+                    <p>the LLM, especially compared to ChatGPT's output, has provided with little information on the event, not covering the needed aspects in its' output (pic. 2).</p>
                 </div>
             </div>
+            <p><strong>The conclusion:</strong> Pi AI requires more detailed engineered prompt.</p>
+
+            <h4>2) Few-shot</h4>
+            <div class="comparison-box">
+                <div>
+                    <h4 style="margin-top:0;">🤖 ChatGPT</h4>
+                    <p>the model followed the suggested output format perfectly. The source checking proved the information true (pic. 3).</p>
+                </div>
+                <div>
+                    <h4 style="margin-top:0;">🟣 Pi AI</h4>
+                    <p>the tool followed the suggested output format, although adding some new information (the curators of the event). The source checking proved the information true (pic. 4).</p>
+                </div>
+            </div>
+            <p><strong>The conclusion:</strong> ChatGPT strictly followed the prompt, whilst Pi AI requires more detailed engineered prompt to align with the instructions.</p>
+
+            <h4>3) Chain-of-Thought</h4>
+            <div class="comparison-box">
+                <div>
+                    <h4 style="margin-top:0;">🤖 ChatGPT</h4>
+                    <p>the tool's output is full and rich with all the sources indicated. The source checking proved the information true (pic. 5).</p>
+                </div>
+                <div>
+                    <h4 style="margin-top:0;">🟣 Pi AI</h4>
+                    <p>the output is much shorter compared to that of ChatGPT. Nevertheless, it answers the main questions indicated in the project. Although the LLM failed to provide any sources. The source checking proved the information false (pic. 6).</p>
+                </div>
+            </div>
+            <p><strong>The conclusion:</strong> Pi AI failed to provide trustful information whilst ChatGPT's output was not only truthful, but also covered all the needed aspects.</p>
 
             <div class="summary-box">
-                <p><strong>Conclusion:</strong> The conclusion we can draw from the both responses is that ChatGPT, although adding too much context to its replies, is more reliable LLM and will be used for this project. For less reliable AI tools, the more detailed engineering of the initial prompt is required. It includes providing more information about the event in the prompt hence avoiding the target event being mixed up with any other one holding the same name.</p>
+                <p><strong>The general conclusion:</strong> ChatGPT, although adding too much context to its replies (except of the Few-shot technique prompting), is more reliable LLM and will be used for this project. For less reliable AI tools, the more detailed engineering of the prompt is required. Moreover, for our project Few-Shot prompting proved to be the most efficient one, since with this technique provides us with the most clear, transparent and no-unnecessary-information output.</p>
             </div>
+
+            <ul class="link-list">
+                <li><a href="#">pic. 1</a></li>
+                <li><a href="#">pic. 2</a></li>
+                <li><a href="#">pic. 3</a></li>
+                <li><a href="#">pic. 4</a></li>
+                <li><a href="#">pic. 5</a></li>
+                <li><a href="#">pic. 6</a></li>
+            </ul>
         </section>
 
-        <!-- ===== SECTION 4: ENRICHMENT ===== -->
+        <!-- ===== SECTION 7: ENRICHMENT ===== -->
         <section>
-            <h2>4. Enriching ArCo Ontology with New Triples</h2>
+            <h2>7. Enriching ArCo Ontology with New Triples</h2>
 
             <h3>Triple A: Spatial Coverage (Museum)</h3>
             <div class="code-block">https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3
 clv:hasSpatialCoverage
 https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino</div>
             <p><strong>Solving problem a) what museum held my event in Moscow.</strong><br>
-            Now, combining the ArCo ontology fully provided in its dictionaries and LLMs, we design new triplets, thus enriching the ArCo ontology.<br>
-            The answer that we know: the event occurred in Russia, Moscow, in the <strong>Armoury Chamber of the Kremlin Museums</strong>.</p>
-            <p>The new triplet: Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums</p>
+            Now, combining the ArCo ontology fully provided in its dictionaries and LLMs, we design new triples, thus enriching the ArCo ontology.<br>
+            The answer that we know: the event occurred in Russia, Moscow, in the Armoury Chamber of the Kremlin Museums.</p>
+            <p>The new triple: Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums</p>
             <p>The SPARQL-query through the ArCo ontology and ChatGPT is provided on the left.</p>
 
             <h3>Triple B: Event Organiser</h3>
@@ -346,84 +497,128 @@ https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5
 event:isEventOrganiserof
 https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</div>
             <p><strong>Solving problem b) who has organised my event.</strong><br>
-            The answer that we know: the event was organised by <strong>Gallerie degli Uffizi, Florence</strong>.</p>
-            <p>The new triplet: Gallerie degli Uffizi – isEventOrganiserof – Il Tesoro dei Medici <br>
+            The answer that we know: the event was organised by Gallerie degli Uffizi, Florence.</p>
+            <p>The new triple: Gallerie degli Uffizi – isEventOrganiserof – Il Tesoro dei Medici<br>
             <strong>OR</strong><br>
             Il Tesoro dei Medici – hasEventOrganiser – Gallerie degli Uffizi</p>
             <p>The SPARQL-query through the ArCo ontology and ChatGPT for the first option is provided on the left.</p>
         </section>
 
-        <!-- ===== SECTION 5: SUMMARY ===== -->
+        <!-- ===== SECTION 8: SPARQL QUERIES WITH NEW TRIPLES ===== -->
         <section>
-            <h2>5. Summary</h2>
+            <h2>8. SPARQL Queries with New Triples</h2>
+            <p>Now, let's ask the LLM to provide us with the whole SPARQL-query suitable for the ArCo's endpoint using new triples.</p>
+            <p><strong>The query for ChatGPT:</strong></p>
+            <div class="code-block-light">
+                I've created new triples to enrich ArCo. Can you write three complete SPARQL queries aligned with the ArCo ontology, incorporating my triples into them one by one?<br><br>
+                Triple 1: https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3 clv:hasSpatialCoverage https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino<br><br>
+                Triple 2: https://w3id.org/arco/resource/CulturalInstituteOrSite/DBunicoCG20403 event:isEventOrganiserof https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3<br><br>
+                Triple 3: https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3 event:hasEventOrganiser https://w3id.org/arco/resource/CulturalInstituteOrSite/DBunicoCG20403
+            </div>
+            <p><strong>The LLM's output is provided below:</strong></p>
+
+            <h4>SPARQL-query 1</h4>
+            <div class="code-block">PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX clv: &lt;https://w3id.org/italia/onto/CLV/&gt;
+PREFIX cis: &lt;http://dati.beniculturali.it/cis/&gt;
+
+SELECT DISTINCT ?event ?eventLabel ?placeLabel
+WHERE {
+
+    ?event a cis:CulturalEvent ;
+           clv:hasSpatialCoverage
+           &lt;https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino&gt; .
+
+    OPTIONAL { ?event rdfs:label ?eventLabel . }
+
+    OPTIONAL {
+        &lt;https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino&gt;
+            rdfs:label ?placeLabel .
+    }
+
+    FILTER(!BOUND(?placeLabel) || REGEX(LCASE(STR(?placeLabel)), "creml"))
+}
+ORDER BY ?eventLabel
+LIMIT 100</div>
+
+            <h4>SPARQL-query 2</h4>
+            <div class="code-block">PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX event: &lt;https://w3id.org/italia/onto/CIS/&gt;
+PREFIX arco: &lt;https://w3id.org/arco/resource/&gt;
+
+SELECT DISTINCT ?organiser ?organiserLabel ?eventLabel
+WHERE {
+
+    ?organiser
+        event:isEventOrganiserOf
+        &lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt; .
+
+    OPTIONAL {
+        ?organiser rdfs:label ?organiserLabel .
+    }
+
+    OPTIONAL {
+        &lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt;
+            rdfs:label ?eventLabel .
+    }
+
+    FILTER(!BOUND(?organiserLabel) ||
+           REGEX(LCASE(STR(?organiserLabel)), "museum|museo|kremlin|creml"))
+}
+ORDER BY ?organiserLabel
+LIMIT 100</div>
+
+            <h4>SPARQL-query 3</h4>
+            <div class="code-block">PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX event: &lt;https://w3id.org/italia/onto/CIS/&gt;
+
+SELECT DISTINCT ?organiser ?organiserLabel ?eventLabel
+WHERE {
+
+    &lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt;
+        event:hasEventOrganiser ?organiser .
+
+    OPTIONAL {
+        ?organiser rdfs:label ?organiserLabel .
+    }
+
+    OPTIONAL {
+        &lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt;
+            rdfs:label ?eventLabel .
+    }
+
+    FILTER(!BOUND(?organiserLabel) ||
+           REGEX(LCASE(STR(?organiserLabel)), "museum|museo|kremlin|creml"))
+}
+ORDER BY ?organiserLabel
+LIMIT 100</div>
+        </section>
+
+        <!-- ===== SECTION 9: TRIPLES VIEW ===== -->
+        <section>
+            <h2>9. How Else These Triples Can Be Seen</h2>
+
+            <h3>Triple A</h3>
             <div class="summary-box">
-                <p><strong>To sum up</strong>, using AI tools and the ontology of ArCo, we were able not only to investigate the weak points of the knowledge graph and lack of specific pieces of information, but also to successfully solve these problems, thus enriching the ArCo's ontology with two new triplets:</p>
-                <ul>
-                    <li><strong>a)</strong> Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums</li>
-                    <li><strong>b)</strong> Gallerie degli Uffizi – isEventOrganiserof – Il Tesoro dei Medici <br>
-                        <em>OR</em> <br>
-                        Il Tesoro dei Medici – hasEventOrganiser – Gallerie degli Uffizi
-                    </li>
-                </ul>
+                <p><strong>Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums</strong></p>
+                <p style="font-family: 'Courier New', monospace; font-size: 0.9rem; word-break: break-all;">
+                    (https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3, https://w3id.org/italia/onto/CLV/hasSpatialCoverage, https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino)
+                </p>
             </div>
-        </section>
 
-        <!-- ===== SECTION 6: SPREADSHEET ===== -->
-        <section>
-            <h2>📊 6. Project Spreadsheet Data</h2>
-    
-
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Step</th>
-                            <th>Action</th>
-                            <th>Description</th>
-                            <th>Results</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Step 1</strong></td>
-                            <td>SPARQL Query</td>
-                            <td>Find events in Moscow using ArCo</td>
-                            <td>Event found: Il Tesoro dei Medici (2011)<br>
-                                <a href="https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3" target="_blank" rel="noopener noreferrer">🔗 ArCo Resource</a></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Step 2</strong></td>
-                            <td>Identify Missing Info</td>
-                            <td>Check what information is missing from ArCo</td>
-                            <td>❌ Missing: Museum venue (hasSpatialCoverage)<br>❌ Missing: Organisers (hasEventOrganiser)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Step 3</strong></td>
-                            <td>LLM Query (ChatGPT)</td>
-                            <td>Ask AI for missing information</td>
-                            <td>✅ Date: 20 May – 1 August 2011<br>✅ Place: Moscow, Armoury Chamber<br>✅ Organisers: Gallerie degli Uffizi</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Step 3</strong></td>
-                            <td>LLM Query (Pi AI)</td>
-                            <td>Compare with alternative AI tool</td>
-                            <td>❌ Provided false information<br>⚠️ Not reliable for this project</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Step 4</strong></td>
-                            <td>RDF Enrichment</td>
-                            <td>Create new triplets to add to ArCo</td>
-                            <td>✅ hasSpatialCoverage → Kremlin Museums<br>✅ hasEventOrganiser → Gallerie degli Uffizi</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h3>Triple B (Option 1)</h3>
+            <div class="summary-box">
+                <p><strong>Gallerie degli Uffizi – isEventOrganiserof – Il Tesoro dei Medici</strong></p>
+                <p style="font-family: 'Courier New', monospace; font-size: 0.9rem; word-break: break-all;">
+                    (https://w3id.org/arco/resource/CulturalInstituteOrSite/DBunicoCG20403, https://w3id.org/arco/ontology/cultural-event/isEventOrganiserOf, https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3)
+                </p>
             </div>
-        </section>
 
-        <hr>
-
-
-    </div> 
-
-</body>
-</html>
+            <h3>Triple B (Option 2)</h3>
+            <div class="summary-box">
+                <p><strong>Il Tesoro dei Medici – hasEventOrganiser – Gallerie degli Uffizi</strong></p>
+                <p style="font-family: 'Courier New', monospace; font-size: 0.9rem; word-break: break-all;">
+                    (https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3, https://w3id.org/arco/ontology/cultural-event/hasEventOrganiser, https://w3id.org/arco/resource/CulturalInstituteOr
