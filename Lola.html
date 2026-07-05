@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portrait of Ignazio Fumagalli – KE4H Project</title>
+    <title>Il Tesoro dei Medici – KE4H Project</title>
     <style>
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
@@ -219,221 +220,158 @@
     <!-- ===== NAVIGATION ===== -->
     <div class="navbar">
         <a href="index.html">🏠 Homepage</a>
-        <a href="Lola.html" class="active">Daria</a>
+        <a href="Lola.html">Daria</a>
         <a href="iuliia.html">Iuliia</a>
-        <a href="Marina.html">Marina</a>
+        <a href="Marina.html" class="active">Marina</a>
         <a href="report.html">📄 Report</a>
     </div>
 
     <!-- ===== MAIN CONTENT ===== -->
     <div class="content">
 
-        <h1>🎨 Portrait of Ignazio Fumagalli – Project Documentation</h1>
+        <h1>🏛️ Il Tesoro dei Medici – Project Documentation</h1>
 
         <!-- ===== SECTION 1: OVERVIEW ===== -->
         <section>
-            <h2>1. Portrait Overview</h2>
+            <h2>1. Exhibition Overview</h2>
             <div class="event-meta">
-                <p><strong>Karl Brjullov – Portrait of Ignazio Fumagalli</strong></p>
-                <p>The Portrait of Ignazio Fumagalli is a painting by the Russian artist Karl Bryullov (1799–1852), whose name is also transliterated as Brjullov or Briullov.</p>
-                <p>Bryullov is regarded as one of the most important Russian painters of the first half of the nineteenth century and a key figure in the transition from Russian neoclassicism to romanticism. His best-known work, The Last Day of Pompeii, established Bryullov as one of the finest European painters of his day. Beyond his monumental history paintings, much of his lasting reputation rests on his portraits, in which he combined romantic expressiveness with sharp psychological insight. He created this portrait during the years he spent working in Italy.</p>
-                <p>The sitter, Ignazio Fumagalli (1778–1842), was an Italian painter and engraver. He was born in Milan, studied at the Accademia di Brera, and served as its Secretary until his death. He also held the Chair of Aesthetics and worked as an art critic for the literary magazine Biblioteca Italiana. As a long-serving and influential figure at the Brera Academy, he was a natural and prestigious subject for a portrait.</p>
-                <p>The painting is kept in Milan, in the collection of the Accademia di Belle Arti di Brera (the Brera Academy), housed within the same complex as the famous Pinacoteca di Brera.</p>
+                <p><strong>“Il Tesoro dei Medici”</strong> was an exhibition held in <strong>Moscow</strong> in 2011. It ran from <strong>20 May to 1 August 2011</strong> and was organized as part of the cultural exchanges between Italy and Russia.</p>
+                <p>The exhibition presented the extraordinary decorative-art collection of the Medici family, the dynasty that ruled Florence and Tuscany during the Renaissance. The works came mainly from the Medici collections preserved in Florence.</p>
+                <p>The show focused not on paintings, but on the Medici passion for luxury objects and collecting, including jewellery, gold and silver works, and artistic objects that demonstrated the family’s wealth, taste, and political power.</p>
+                <p>A major theme of the exhibition was how the Medici used collecting as a way to express Renaissance ideals of culture, magnificence, and authority. The treasures reflected the tastes of rulers such as <strong>Cosimo I de' Medici</strong> and later members of the dynasty, including the final Medici heir <strong>Anna Maria Luisa de' Medici</strong>.</p>
+            </div>
+        </section>
+        <img src="tesoro.jpg" alt="brullov" width="1000" height="600">
+
+        <!-- ===== SECTION 2: SPARQL QUERIES ===== -->
+        <section>
+            <h2>2. SPARQL Queries & Results</h2>
+            <p>The following queries were used to explore the ArCo knowledge graph and retrieve information about cultural events in Russia.</p>
+
+            <h3>Query 1: Events in Moscow</h3>
+            <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX clv: &lt;https://w3id.org/italia/onto/CLV/&gt;
+PREFIX cis: &lt;http://dati.beniculturali.it/cis/&gt;
+
+SELECT *
+WHERE {
+  ?place a cis:GeographicalFeature ;
+         rdfs:label "Mosca" .
+  ?event a cis:CulturalEvent ;
+         clv:hasSpatialCoverage ?place ;
+         rdfs:label ?eventLabel
+}
+ORDER BY DESC(?eventLabel)
+LIMIT 100</div>
+            <p><strong>Description:</strong> Since we have decided to work on the events combining Russian and Italian cultural heritage, the initial first step is choosing an event.</p>
+            <p>The main cities to consider in Russia are Moscow and Saint-Petersburg. The query for Saint-Petersburg (rdfs:label "Pietroburgo") has shown only one event (link 1) held in 1902, while the query for Moscow (rdfs:label "Mosca") has shown much more options (link 2). My choice was "Il Tesoro dei Medici", 2011, since a) it is a modern event and it is easier to find relevant information about it; b) ... .</p>
+            <ul class="link-list">
+                <li><a href="#">link 1</a></li>
+                <li><a href="#">link 2</a></li>
+            </ul>
+
+            <h3>Query 2: Describe Event IRI</h3>
+            <div class="code-block">PREFIX cis: &lt;https://w3id.org/arco/resource/CulturalEvent/&gt;
+DESCRIBE cis:4c88dc5e0662f98f9c0ff26a0b51e4d3</div>
+            <p><strong>Description:</strong> The first thing needed to be done is to determine the information about my event that is already present in the ArCo. Exploring the KG's ontology, we are able to identify and use classes and properties that can be used to model a needed query.</p>
+            <p>The task can be done in a couple of ways. For instance, on the left I have provided SPARQL-query requesting all the information available about the event in the form of microdata document. Along with the place, name (rdfs:label OR l0:name) and the date (tiapit:time) of my event, I have successfully found the information about the type of the event (rdf:type) and a cultural entity involved – unfortunately, only one entity is presented in the microdata document (cis:involvesCulturalEntity) (<a href="#">link 3</a>).</p>
+            <p>However, by comparing the events held in different cities, we can assume that for each of them the pieces of information indicated are these:
+                <ul>
+                    <li><strong>a)</strong> name of the event (rdfs:label OR l0:name);</li>
+                    <li><strong>b)</strong> type of the event (rdf:type);</li>
+                    <li><strong>c)</strong> paintings, sculptures, other masterpieces presented (cis:involvesCulturalEntity);</li>
+                    <li><strong>d)</strong> date of the event (ti:time).</li>
+                </ul>
+                Usually these features are the only ones presented on the IRI of an event. Thus, a lot of information is missing.
+            </p>
+
+            <h3>Query 3: All Properties of the Event</h3>
+            <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+SELECT ?property ?value ?valueLabel
+WHERE {
+  &lt;https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3&gt;
+    ?property ?value .
+  OPTIONAL {
+    ?value rdfs:label ?valueLabel .
+  }
+}</div>
+            <p><strong>Description:</strong> However, I wanted to focus on two specific missing things for my event. When I have checked via SPARQL whether they exist, the answer from ArCo made it clear they are not presented in the KG. Those things are as following:
+                <br><strong>a)</strong> what museum held my event in Moscow (e.g., through clv:hasSpatialCoverage) – no response, empty table;
+                <br><strong>b)</strong> who has organised my event (e.g., through "arco:hasEventOrganiser ?organiser") – no response, empty table.</p>
+            <p>Checking the results with the SPARQL-query that allows us to see all the features of the specific event (provided on the left, plus see <a href="#">link 4</a>), we receive the proof ArCo misses the specific place of the event and its organisers. Those are the problems we are focusing on.</p>
+        </section>
+
+        <!-- ===== SECTION 3: AI TOOLS ===== -->
+        <section>
+            <h2>3. Using AI Tools to Enrich the Knowledge Graph</h2>
+
+            <h3>Step 1: Questions</h3>
+            <div class="code-block-light">
+                <strong>Prompt for the LLMs:</strong><br>
+                "Provide me with necessary information on 'Il Tesoro dei Medici'. Provide me with the answer as following: 1) the date of the event; 2) the place of the event – country, city, museum; 3) the organisers of the event. The date of the event is being asked to avoid the possibility of events with the same name appearing."
+            </div>
+
+            <h3>Step 2: Answers</h3>
+            <div class="comparison-box">
+                <div>
+                    <h4 style="margin-top:0;">🤖 ChatGPT</h4>
+                    <p><strong>Response:</strong> (pic. 1) Despite the format prompting, the LLM has given a lot of context on the event, thus "opening a dialogue" with the user. However, the tool managed to provide with necessary information, immediately indicating reliable sources.</p>
+                </div>
+                <div>
+                    <h4 style="margin-top:0;">🟣 Pi AI</h4>
+                    <p><strong>Response:</strong> (pic. 2) The tool has not proven to be "the first emotionally intelligent AI" since it lacks the hooks to encourage communication with the user. What is even more important, is the fact of Pi AI providing <strong>false information</strong> about the event, not considering the possibility of several events with the same name existing.</p>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>Conclusion:</strong> The conclusion we can draw from the both responses is that ChatGPT, although adding too much context to its replies, is more reliable LLM and will be used for this project. For less reliable AI tools, the more detailed engineering of the initial prompt is required. It includes providing more information about the event in the prompt hence avoiding the target event being mixed up with any other one holding the same name.</p>
             </div>
         </section>
 
-        <!-- ===== SECTION 2: STEPS ===== -->
+        <!-- ===== SECTION 4: ENRICHMENT ===== -->
         <section>
-            <h2>2. Methodology Steps</h2>
-            <ul>
-                <li><strong>Step 1</strong> – SPARQL query to find the portrait in database.</li>
-                <li><strong>Step 2</strong> – find missing information.</li>
-                <li><strong>Step 3</strong> – use LLMs to fill in the gaps in ArCo database.</li>
-                <li><strong>Step 4</strong> – use LLMs to enrich the database.</li>
-            </ul>
+            <h2>4. Enriching ArCo Ontology with New Triples</h2>
+
+            <h3>Triple A: Spatial Coverage (Museum)</h3>
+            <div class="code-block">https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3
+clv:hasSpatialCoverage
+https://w3id.org/arco/resource/GeographicalFeature/d3e863b4c91bff6d3a274e923e9e5968/MuseiDelCremlino</div>
+            <p><strong>Solving problem a) what museum held my event in Moscow.</strong><br>
+            Now, combining the ArCo ontology fully provided in its dictionaries and LLMs, we design new triplets, thus enriching the ArCo ontology.<br>
+            The answer that we know: the event occurred in Russia, Moscow, in the <strong>Armoury Chamber of the Kremlin Museums</strong>.</p>
+            <p>The new triplet: Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums</p>
+            <p>The SPARQL-query through the ArCo ontology and ChatGPT is provided on the left.</p>
+
+            <h3>Triple B: Event Organiser</h3>
+            <div class="code-block">https://w3id.org/arco/resource/CulturalInstituteOrSite/DBunicoCG20403
+event:isEventOrganiserof
+https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</div>
+            <p><strong>Solving problem b) who has organised my event.</strong><br>
+            The answer that we know: the event was organised by <strong>Gallerie degli Uffizi, Florence</strong>.</p>
+            <p>The new triplet: Gallerie degli Uffizi – isEventOrganiserof – Il Tesoro dei Medici <br>
+            <strong>OR</strong><br>
+            Il Tesoro dei Medici – hasEventOrganiser – Gallerie degli Uffizi</p>
+            <p>The SPARQL-query through the ArCo ontology and ChatGPT for the first option is provided on the left.</p>
         </section>
 
-        <!-- ===== SECTION 3: SPARQL QUERY ===== -->
+        <!-- ===== SECTION 5: SUMMARY ===== -->
         <section>
-            <h2>3. SPARQL Query & Results</h2>
-
-            <h3>Query</h3>
-            <div class="code-block">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX arco-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
-PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
-PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-
-SELECT DISTINCT ?bene ?nome ?autore
-WHERE {
-  ?bene rdf:type/rdfs:subClassOf* arco:CulturalProperty ;
-        rdfs:label ?nome ;
-        arco-cd:hasAuthor ?ag .
-  ?ag rdfs:label ?autore .
-  FILTER(CONTAINS(LCASE(STR(?autore)), "brjullov"))
-}
-LIMIT 100</div>
-
-            <h3>Results</h3>
-            <ul class="link-list">
-                <li><a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988" target="_blank" rel="noopener noreferrer">🔗 ArCo Resource: 0300157988</a></li>
-            </ul>
-
+            <h2>5. Summary</h2>
             <div class="summary-box">
-                <p><strong>Information Found in ArCo:</strong></p>
+                <p><strong>To sum up</strong>, using AI tools and the ontology of ArCo, we were able not only to investigate the weak points of the knowledge graph and lack of specific pieces of information, but also to successfully solve these problems, thus enriching the ArCo's ontology with two new triplets:</p>
                 <ul>
-                    <li><strong>@it / @en:</strong> Labels available</li>
-                    <li><strong>dc:date:</strong> 1800-1845 — <span class="badge">no exact year</span></li>
-                    <li><strong>a-cd:historicalInformation:</strong> Depositato nel 1979, 28 VI (valore 15.000) n. 3. La scheda cartacea annota un restauro del quale non fornisce informazioni.</li>
-                    <li><strong>core:description:</strong> Dipinto raffigurante il ritratto di <span style="color:#8b1a1a; font-weight:bold;">Igazio</span> Fumagalli — <span class="badge">TYPO</span></li>
+                    <li><strong>a)</strong> Il Tesoro dei Medici – hasSpatialCoverage – the Kremlin Museums</li>
+                    <li><strong>b)</strong> Gallerie degli Uffizi – isEventOrganiserof – Il Tesoro dei Medici <br>
+                        <em>OR</em> <br>
+                        Il Tesoro dei Medici – hasEventOrganiser – Gallerie degli Uffizi
+                    </li>
                 </ul>
             </div>
         </section>
 
-        <!-- ===== SECTION 4: LLM COMPARISON ===== -->
+        <!-- ===== SECTION 6: SPREADSHEET ===== -->
         <section>
-            <h2>4. LLM Comparison</h2>
-            <p>Using ChatGPT and Claude to find missing information.</p>
-
-            <div class="comparison-box">
-                <div>
-                    <h4 style="margin-top:0;">🤖 ChatGPT</h4>
-                    <p><strong>Prompt:</strong> <em>"Tell me about the portrait of Fumagalli by Karl Brjullov."</em></p>
-                    <p><strong>Response:</strong></p>
-                    <p>The Portrait of Ignatius Fumagalli is a relatively lesser-known but finely executed portrait by the Russian Romantic painter Karl Bryullov, one of the most celebrated artists of the 19th century. The work is held in the Pinacoteca di Brera in Milan.</p>
-                    <p><strong>What the painting shows:</strong></p>
-                    <ul>
-                        <li>Bust-length image, three-quarter pose</li>
-                        <li>Dark coat, waistcoat, white cravat, small decorative pin</li>
-                        <li>One hand rests on a chair while holding a folded white handkerchief or paper</li>
-                        <li>Subdued background focusing on the sitter's face and expression</li>
-                    </ul>
-                    <p><strong>Artistic style:</strong></p>
-                    <ul>
-                        <li>Psychological presence</li>
-                        <li>Subtle realism</li>
-                        <li>Romantic sensitivity</li>
-                        <li>Elegant simplicity</li>
-                    </ul>
-                    <p style="font-size:0.9rem; color:#5a4f44;">⚠️ Too much unnecessary information, no specific data needed.</p>
-                </div>
-                <div>
-                    <h4 style="margin-top:0;">🟣 Claude</h4>
-                    <p><strong>Prompt:</strong> <em>"Tell me about the portrait of Fumagalli by Karl Brjullov."</em></p>
-                    <p><strong>Response:</strong></p>
-                    <p>The "Portrait of Ignatius Fumagalli" (Ignazio Fumagalli) is a portrait by the Russian painter Karl Bryullov (1799–1852), who is also transliterated as Briullov, Briuloff, or Brjullov. According to museum records, it's an oil on canvas measuring <strong>72 × 57 cm</strong>, held at the Accademia di Belle Arti di Brera (the Brera Academy) in Milan, in its Quadreria (picture gallery) collection.</p>
-                    <p>The portrait fits naturally into Bryullov's career. After his training at the Imperial Academy of Arts in St. Petersburg, he spent his most productive years in Italy, where he worked from the early 1820s until 1835 as a portraitist and genre painter before his fame exploded with The Last Day of Pompeii.</p>
-                    <p>Stylistically, the work reflects what Bryullov is most admired for today. While his monumental history paintings made his name, much of his lasting reputation rests on his more intimate portraits, watercolours, and travel sketches.</p>
-                    <p style="font-size:0.9rem; color:#5a4f44;">✅ Got exact measurements but no other information.</p>
-                </div>
-            </div>
-
-            <div class="summary-box">
-                <p><strong>Conclusion:</strong> The first try (zero shot) gives too much unnecessary information and no data we need.</p>
-            </div>
-        </section>
-
-        <!-- ===== SECTION 5: FOLLOW-UP QUESTIONS ===== -->
-        <section>
-            <h2>5. Follow-up Questions & Results</h2>
-
-            <h3>Question: Can you find the exact year the portrait was created?</h3>
-
-            <div class="comparison-box">
-                <div>
-                    <h4 style="margin-top:0;">🤖 ChatGPT</h4>
-                    <p><strong>Answer:</strong> Yes — <strong>1834</strong></p>
-                    <p>While some catalog entries only give a broad date range ("1800–1845"), more specific scholarly and biographical sources identify the portrait as having been painted in 1834.</p>
-                    <p><strong>Evidence:</strong></p>
-                    <ul>
-                        <li>The Italian Wikipedia article on Ignazio Fumagalli states that the portrait by Karl Bryullov was executed in 1834 and is preserved at the Pinacoteca di Brera.</li>
-                        <li>The authoritative biographical entry in the Italian encyclopedia Treccani likewise notes that "a second portrait, executed in 1834 by the Russian P. Brjullov, is located at Brera."</li>
-                        <li>Historical context: Fumagalli publicly praised Bryullov's The Last Day of Pompeii when it was exhibited in Milan in 1833.</li>
-                    </ul>
-                    <p><strong>Conclusion:</strong> The best-supported date for the Portrait of Ignazio Fumagalli is 1834.</p>
-                    <p style="font-size:0.9rem;">✅ Sources: <a href="https://it.wikipedia.org/wiki/Ignazio_Fumagalli" target="_blank" rel="noopener noreferrer">Wikipedia</a>, <a href="https://www.treccani.it/enciclopedia/michelangelo-fumagalli_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani</a></p>
-                </div>
-                <div>
-                    <h4 style="margin-top:0;">🟣 Claude</h4>
-                    <p><strong>Answer:</strong> Yes — <strong>1834</strong></p>
-                    <p>According to the Pinacoteca di Brera's records, the Portrait of Ignazio Fumagalli (1778–1842) is dated 1834.</p>
-                    <p>That date fits the biographical picture well. Ignazio Fumagalli (1778–1842) was an Italian painter and engraver, born in Milan, who studied at the Accademia di Brera and served as its Secretary from 1817 until his death. Bryullov was active in Italy through 1835 and had connections to the Brera Academy in Milan.</p>
-                    <p style="font-size:0.9rem;">✅ Source: print-collection catalog citing Brera collection</p>
-                </div>
-            </div>
-
-            <div class="summary-box">
-                <p><strong>Conclusion:</strong> Both ChatGPT and Claude give exact information and sources.</p>
-            </div>
-
-            <h3>Question: Help me to find any information about restorations of the painting</h3>
-
-            <div class="comparison-box">
-                <div>
-                    <h4 style="margin-top:0;">🤖 ChatGPT</h4>
-                    <p>"I searched specifically for restoration records of the Portrait of Ignazio (Ignatius) Fumagalli by Karl Bryullov, and the results are surprisingly sparse."</p>
-                </div>
-                <div>
-                    <h4 style="margin-top:0;">🟣 Claude</h4>
-                    <p>"I wasn't able to surface restoration records in that first pass. Let me check the Brera's own catalog... I've searched fairly thoroughly, and I should be straightforward with you: I haven't been able to find any specific documented restoration or conservation history for this particular painting."</p>
-                </div>
-            </div>
-
-            <div class="summary-box">
-                <p><strong>❌ Both ChatGPT and Claude</strong> can't help with this problem, as there's no available information on the internet.</p>
-            </div>
-        </section>
-
-        <!-- ===== SECTION 6: RDF ENRICHMENT ===== -->
-        <section>
-            <h2>6. RDF Enrichment</h2>
-            <p>Transforming the found information into RDF format to add to the ArCo database.</p>
-
-            <h3>6.1 Creation Date (dc:date)</h3>
-            <div class="code-block">@prefix dc:  &lt;http://purl.org/dc/elements/1.1/&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988&gt;
-    dc:date "1834"^^xsd:gYear .</div>
-
-            <h3>6.2 Description Correction (Typo Fix)</h3>
-
-            <div class="summary-box">
-                <p><strong>❌ Original:</strong> Dipinto raffigurante il ritratto di <span style="color:#8b1a1a; font-weight:bold;">Igazio</span> Fumagalli</p>
-                <p><strong>✅ Corrected:</strong> Dipinto raffigurante il ritratto di <span style="color:#2d6a2d; font-weight:bold;">Ignazio</span> Fumagalli</p>
-            </div>
-
-            <h4>Option 1: Simple Triple Addition</h4>
-            <div class="code-block">@prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
-
-# Replace:
-# "Dipinto raffigurante il ritratto di Igazio Fumagalli"@it
-
-&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988&gt;
-    core:description "Dipinto raffigurante il ritratto di Ignazio Fumagalli"@it .</div>
-
-            <h4>Option 2: SPARQL Update (DELETE/INSERT) — Recommended</h4>
-            <div class="code-block">PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
-
-DELETE { ?cp core:description ?old }
-INSERT { ?cp core:description ?new }
-WHERE {
-  BIND(&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988&gt; AS ?cp)
-  ?cp core:description ?old .
-  FILTER(CONTAINS(STR(?old), "Igazio Fumagalli"))
-  BIND(REPLACE(STR(?old), "Igazio", "Ignazio") AS ?newStr)
-  BIND(IF(LANG(?old) != "", STRLANG(?newStr, LANG(?old)), ?newStr) AS ?new)
-}</div>
-
-            <div class="summary-box">
-                <p><strong>⚠️ Important Note:</strong> This isn't an "enrichment," but a <strong>correction</strong> to an existing value. Simply adding triplets (as with dimensions) won't do. If you simply append the correct string to Turtle, the column will end up with two descriptions—the old one with the typo, and the new one. Therefore, a <strong>SPARQL Update DELETE/INSERT operation</strong> is needed.</p>
-                <p><strong>🔗 ArCo Resource:</strong> <a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988" target="_blank" rel="noopener noreferrer">https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988</a></p>
-                <p><em>Note: The ArCo endpoint returns a 303 status (redirect), which is normal for linked data resources. You can access the RDF/XML or Turtle representation by content negotiation.</em></p>
-            </div>
-        </section>
-
-        <!-- ===== SECTION 7: SPREADSHEET ===== -->
-        <section>
-            <h2>📊 7. Project Spreadsheet Data</h2>
+            <h2>📊 6. Project Spreadsheet Data</h2>
             <p>Structured data from the KE4H project spreadsheet.</p>
 
             <div class="table-container">
@@ -450,32 +388,33 @@ WHERE {
                         <tr>
                             <td><strong>Step 1</strong></td>
                             <td>SPARQL Query</td>
-                            <td>Find portrait in ArCo using filter for "brjullov"</td>
-                            <td>✅ Resource 0300157988 found</td>
+                            <td>Find events in Moscow using ArCo</td>
+                            <td>Event found: Il Tesoro dei Medici (2011)<br>
+                                <a href="https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3" target="_blank" rel="noopener noreferrer">🔗 ArCo Resource</a></td>
                         </tr>
                         <tr>
                             <td><strong>Step 2</strong></td>
                             <td>Identify Missing Info</td>
-                            <td>Check what information is missing</td>
-                            <td>❌ No exact date (1800-1845)<br>❌ Typo: "Igazio"</td>
+                            <td>Check what information is missing from ArCo</td>
+                            <td>❌ Missing: Museum venue (hasSpatialCoverage)<br>❌ Missing: Organisers (hasEventOrganiser)</td>
                         </tr>
                         <tr>
                             <td><strong>Step 3</strong></td>
                             <td>LLM Query (ChatGPT)</td>
-                            <td>Ask for missing information</td>
-                            <td>✅ Date: 1834<br>⚠️ Too much context</td>
+                            <td>Ask AI for missing information</td>
+                            <td>✅ Date: 20 May – 1 August 2011<br>✅ Place: Moscow, Armoury Chamber<br>✅ Organisers: Gallerie degli Uffizi</td>
                         </tr>
                         <tr>
                             <td><strong>Step 3</strong></td>
-                            <td>LLM Query (Claude)</td>
-                            <td>Ask for missing information</td>
-                            <td>✅ Date: 1834<br>✅ Measurements: 72 × 57 cm</td>
+                            <td>LLM Query (Pi AI)</td>
+                            <td>Compare with alternative AI tool</td>
+                            <td>❌ Provided false information<br>⚠️ Not reliable for this project</td>
                         </tr>
                         <tr>
                             <td><strong>Step 4</strong></td>
                             <td>RDF Enrichment</td>
-                            <td>Add dc:date and correct description</td>
-                            <td>✅ dc:date "1834"<br>✅ core:description corrected</td>
+                            <td>Create new triplets to add to ArCo</td>
+                            <td>✅ hasSpatialCoverage → Kremlin Museums<br>✅ hasEventOrganiser → Gallerie degli Uffizi</td>
                         </tr>
                     </tbody>
                 </table>
@@ -484,6 +423,12 @@ WHERE {
 
         <hr>
 
+        <div class="footer-note">
+            <p>📄 KE4H Project – Cultural Heritage and Semantic Web<br>
+            <strong>ArCo Resource:</strong> <a href="https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3" target="_blank" rel="noopener noreferrer">https://w3id.org/arco/resource/CulturalEvent/4c88dc5e0662f98f9c0ff26a0b51e4d3</a></p>
+        </div>
+
+    </div> <!-- end content -->
 
 </body>
 </html>
