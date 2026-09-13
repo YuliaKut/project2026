@@ -468,26 +468,29 @@ LIMIT 100</div>
 <div class="query-card">
     <span class="query-label">SPARQL Query</span>
     <div class="code-block">
-        PREFIX a-loc: &lt;https://w3id.org/arco/ontology/location/&gt;
-PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+       PREFIX a-loc: &lt;https://w3id.org/arco/ontology/location/>
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt; 
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; 
 
-SELECT *
+SELECT ?property ?value ?label
 WHERE {
-  &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt; ?rel ?something .
+  &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt;  ?property ?value .
   
   FILTER (
-    ?rel IN (
+    ?property IN (
       a-loc:hasCulturalPropertyAddress,
+      a-loc:hasTimeIndexedTypedLocation,
       arco:hasCulturalInstituteOrSite
     )
   )
   
-  ?something ?p &lt;https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69&gt; .
+  OPTIONAL { ?value rdfs:label ?label }
 }
 LIMIT 100</div>
 </div>
 
-
+<p> This showed me all the locations connected to Menologio icon but there was no Palazzo Pitti among them. (<a class="inline" href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+a-loc%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Flocation%2F%3E%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0APREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0A%0D%0ASELECT+%3Fproperty+%3Fvalue+%3Flabel%0D%0AWHERE+%7B%0D%0A++%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FHistoricOrArtisticProperty%2F0900281911%3E+%3Fproperty+%3Fvalue+.%0D%0A++%0D%0A++FILTER+%28%0D%0A++++%3Fproperty+IN+%28%0D%0A++++++a-loc%3AhasCulturalPropertyAddress%2C%0D%0A++++++a-loc%3AhasTimeIndexedTypedLocation%2C%0D%0A++++++arco%3AhasCulturalInstituteOrSite%0D%0A++++%29%0D%0A++%29%0D%0A++%0D%0A++OPTIONAL+%7B+%3Fvalue+rdfs%3Alabel+%3Flabel+%7D%0D%0A%7D%0D%0ALimit+100%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" rel="noopener noreferrer">link</a>) </p>
+<img class="icon-img" src="location.png" alt="Menologio icon detail">
 <p>The second one was to check if the first panel of the icon was connected with the second one in the database.</p>
 
 <div class="query-card">
