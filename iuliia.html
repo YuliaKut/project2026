@@ -459,21 +459,30 @@ LIMIT 100</div>
 
 <h2>Step 2 — Identifying the gaps in the knowledge</h2>
 
-<p>I needed to identify the gaps and quickly found some. For example, the museum where the icon is located is not mentioned. Second one is that 2 different parts of one icon are not connected to each other.</p>
+<p>I needed to identify the gaps and quickly found some. For example, the museum where the icon is located is not mentioned, only city of Firenze. Second one is that 2 different parts of one icon are not connected to each other.</p>
 
 <p>As we can see from this screenshot, the first part of the icon is related only to itself, not to the second part which has this unique identifier: 0900281910.</p>
 <img class="icon-img" src="relation 1.png" alt="Menologio icon detail">
-<p>To check I made two queries. One was to ask about whether there is an object called 'Menologium', English name of my chosen icon.</p>
+<p>To check I made two queries. One was to ask about whether there is a connection between Menologio and Palazzo Pitti.</p>
 
 <div class="query-card">
     <span class="query-label">SPARQL Query</span>
-    <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-PREFIX arco-arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+    <div class="code-block">
+        PREFIX a-loc: &lt;https://w3id.org/arco/ontology/location/&gt;
+PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
 
-SELECT ?icon ?label WHERE {
-  ?icon a/rdfs:subClassOf* arco-arco:CulturalProperty . 
-  ?icon rdfs:label ?label .
-  FILTER(REGEX(?label, "Menologium", "i"))
+SELECT *
+WHERE {
+  &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt; ?rel ?something .
+  
+  FILTER (
+    ?rel IN (
+      a-loc:hasCulturalPropertyAddress,
+      arco:hasCulturalInstituteOrSite
+    )
+  )
+  
+  ?something ?p &lt;https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69&gt; .
 }
 LIMIT 100</div>
 </div>
