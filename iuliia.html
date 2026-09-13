@@ -453,6 +453,7 @@ SELECT ?icon ?label WHERE {
 }
 LIMIT 100</div>
 </div>
+    <img class="icon-img" src="search result.png" alt="Menologio icon detail">
 
 <p>Result of this search was Menologio in the Arco database. However, I found out that there are two different links leading to two parts of my piece of art: first is icon panel from March to August (<a class="inline" href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281910.html" target="_blank" rel="noopener noreferrer">Link</a>) and the second one is from September to February (<a class="inline" href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281911.html" target="_blank" rel="noopener noreferrer">Link</a>).</p>
 
@@ -478,7 +479,7 @@ LIMIT 100</div>
 </div>
 
 <p>This query gave me no results (<a class="inline" href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco-arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A%0D%0ASELECT+%3Ficon+%3Flabel+WHERE+%7B%0D%0A++%3Ficon+a%2Frdfs%3AsubClassOf*+arco-arco%3ACulturalProperty+.+%0D%0A++%3Ficon+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Menologium%22%2C+%22i%22%29%29%0D%0A%7D%0D%0ALIMIT+100%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" rel="noopener noreferrer">link</a>).</p>
-
+<img class="icon-img" src="relation 1.png" alt="Menologio icon detail">
 <p>The second one was to check if the first panel of the icon was connected with the second one in the database.</p>
 
 <div class="query-card">
@@ -491,7 +492,7 @@ SELECT ?relatedwork WHERE {
 </div>
 
 <p>This one also turned out empty (<a class="inline" href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E+%0D%0APREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E+%0D%0ASELECT+%3Frelatedwork+WHERE+%7B%0D%0A%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FHistoricOrArtisticProperty%2F0900281910%3E+core%3AisRelatedTo+%3Frelatedwork+.%0D%0A%7D%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" rel="noopener noreferrer">link</a>).</p>
-
+<img class="icon-img" src="relation 2.png" alt="Menologio icon detail">
 <h2>Step 3 — Enrichment and comparison using LLM models</h2>
 
 <div class="table-container">
