@@ -534,7 +534,16 @@ SELECT ?relatedwork WHERE {
         <tr class="prompt-heading">
             <td colspan="2">
                 Few-shot Prompt
-                <div class="prompt-desc">Role: expert on Russian Orthodox icons &amp; Uffizi collections. Two worked examples, then the question: <em>Where is the icon from Uffizi Galleries located?</em></div>
+                <div class="prompt-desc">
+                    You are an expert on Russian Orthodox icons and the collections of the Uffizi Galleries. Answer questions accurately and concisely, using only established art-historical facts.<br><br>
+                    <strong>Example 1:</strong><br>
+                    Q: What is Menologio?<br>
+                    A: It is a pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop around 1730–1750. Together they form a Menologium, an Orthodox liturgical calendar showing the fixed feast days and commemorations of saints for the entire year. Each panel measures 70 × 54 cm.<br><br>
+                    <strong>Example 2:</strong><br>
+                    Q: How is the year divided on the two panels?<br>
+                    A: The first panel covers the months from September to February; the second covers March to August. This follows the traditional Byzantine liturgical calendar, which begins on 1 September rather than 1 January. The scene of Christ's Resurrection / Descent into Hell appears at the top centre of both panels because it is the most important feast.<br><br>
+                    Now answer where is the icon from Uffizi Galleries located?
+                </div>
             </td>
         </tr>
         <tr>
@@ -562,7 +571,18 @@ SELECT ?relatedwork WHERE {
         <tr class="prompt-heading">
             <td colspan="2">
                 Chain-of-Thought Prompt
-                <div class="prompt-desc"><em>Explain your previous answer about location step by step.</em></div>
+                <div class="prompt-desc">
+                    Here is my step-by-step reasoning:<br><br>
+                    <strong>Step 1 — Identify the object.</strong><br>
+                    You asked about a Menologio icon dated ca. 1725–1749. From the earlier exchange, this corresponds to the pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop, forming an Orthodox liturgical calendar for the full year.<br><br>
+                    <strong>Step 2 — Establish the owning institution.</strong><br>
+                    These icons belong to the <strong>Uffizi Galleries</strong> collection. The Uffizi Galleries is not a single building but a network of museums in Florence, including the Uffizi, Palazzo Pitti, and the Boboli Gardens.<br><br>
+                    <strong>Step 3 — Determine the specific venue within that network.</strong><br>
+                    The Russian icons in the Uffizi Galleries' holdings — including the Menologio — are housed in the <strong>Museum of Russian Icons (Museo delle Icone Russe)</strong>, which is located inside <strong>Palazzo Pitti</strong>, not the Uffizi building itself.<br><br>
+                    <strong>Step 4 — Pinpoint the room.</strong><br>
+                    Within Palazzo Pitti, the Museum of Russian Icons occupies four large ground-floor rooms with 17th-century frescoes, situated around the courtyard.<br><br>
+                    <strong>Conclusion:</strong> The Menologio icon is located in the Museum of Russian Icons, Palazzo Pitti, Florence — part of the Uffizi Galleries system.
+                </div>
             </td>
         </tr>
         <tr>
