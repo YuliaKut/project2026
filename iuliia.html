@@ -459,11 +459,11 @@ LIMIT 100</div>
 
 <h2>Step 2 — Identifying the gaps in the knowledge</h2>
 
-<p>I needed to identify the gaps and quickly found some. For example, the English name of the icon is not mentioned. Second one is that 2 different parts of one icon are not connected to each other.</p>
+<p>I needed to identify the gaps and quickly found some. For example, the museum where the icon is located is not mentioned. Second one is that 2 different parts of one icon are not connected to each other.</p>
 
 <p>As we can see from this screenshot, the first part of the icon is related only to itself, not to the second part which has this unique identifier: 0900281910.</p>
-
-<p>To check this I made two queries. One was to ask about whether there is an object called 'Menologium', English name of my chosen icon.</p>
+<img class="icon-img" src="relation 1.png" alt="Menologio icon detail">
+<p>To check I made two queries. One was to ask about whether there is an object called 'Menologium', English name of my chosen icon.</p>
 
 <div class="query-card">
     <span class="query-label">SPARQL Query</span>
@@ -478,8 +478,7 @@ SELECT ?icon ?label WHERE {
 LIMIT 100</div>
 </div>
 
-<p>This query gave me no results (<a class="inline" href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco-arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A%0D%0ASELECT+%3Ficon+%3Flabel+WHERE+%7B%0D%0A++%3Ficon+a%2Frdfs%3AsubClassOf*+arco-arco%3ACulturalProperty+.+%0D%0A++%3Ficon+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Menologium%22%2C+%22i%22%29%29%0D%0A%7D%0D%0ALIMIT+100%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" rel="noopener noreferrer">link</a>).</p>
-<img class="icon-img" src="relation 1.png" alt="Menologio icon detail">
+
 <p>The second one was to check if the first panel of the icon was connected with the second one in the database.</p>
 
 <div class="query-card">
