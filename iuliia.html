@@ -273,7 +273,6 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            table-layout: fixed;
         }
         .llm-table th {
             background: #4a2c2c;
@@ -340,7 +339,7 @@
             color: #6b2e2e;
         }
 
-        /* ===== NEW: side-by-side LLM comparison table ===== */
+        /* ===== LLM comparison table: 2 columns, one row per prompt ===== */
         .llm-compare {
             width: 100%;
             border-collapse: separate;
@@ -358,64 +357,57 @@
             color: #f5f0e8;
             padding: 14px 16px;
             text-align: left;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 1rem;
             border: none;
+            width: 50%;
         }
-        .llm-compare th.col-prompt { width: 20%; }
-        .llm-compare th.col-llm    { width: 40%; }
         .llm-compare th:first-child { border-top-left-radius: 10px; }
         .llm-compare th:last-child  { border-top-right-radius: 10px; }
         .llm-compare td {
             border: 1px solid #e8e0d5;
-            border-top: none;
-            padding: 14px 16px;
+            padding: 16px;
             vertical-align: top;
         }
-        .llm-compare tr:nth-child(even) td { background-color: #faf7f2; }
-        .llm-compare tr:hover td { background-color: #f3ede3; }
-        .llm-compare tr:last-child td:first-child { border-bottom-left-radius: 10px; }
-        .llm-compare tr:last-child td:last-child  { border-bottom-right-radius: 10px; }
-        .llm-compare .prompt-cell {
-            background: #f3ede3;
+        .llm-compare .prompt-heading td {
+            background: #f3ede3 !important;
+            border-top: 2px solid #d9cbb6;
             font-family: 'Segoe UI', Arial, sans-serif;
-        }
-        .llm-compare .prompt-cell .prompt-tag { margin-bottom: 10px; }
-        .llm-compare .prompt-cell .prompt-body {
-            font-size: 0.85rem;
-            color: #3a3a3a;
-            line-height: 1.45;
-        }
-        .llm-compare .answer-cell .llm-name {
-            display: block;
-            margin-bottom: 8px;
+            font-weight: 700;
+            color: #4a2c2c;
             font-size: 0.95rem;
         }
+        .llm-compare .prompt-heading:first-child td {
+            border-top: none;
+        }
+        .llm-compare tr:not(.prompt-heading):hover td {
+            background-color: #faf7f2;
+        }
+        .llm-compare .prompt-desc {
+            font-size: 0.85rem;
+            color: #5a4f44;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-weight: normal;
+        }
+        .llm-compare .llm-quote { margin: 6px 0 0; }
         .llm-compare .answer-cell ul { margin: 6px 0 0 18px; padding: 0; }
         .llm-compare .answer-cell li { margin-bottom: 6px; }
-        @media (max-width: 780px) {
-            .llm-compare, .llm-compare thead, .llm-compare tbody,
-            .llm-compare tr, .llm-compare td, .llm-compare th {
+
+        @media (max-width: 700px) {
+            .llm-compare, .llm-compare tbody, .llm-compare tr, .llm-compare td {
                 display: block;
                 width: 100% !important;
             }
             .llm-compare thead { display: none; }
-            .llm-compare tr {
-                margin-bottom: 18px;
-                border: 1px solid #e8e0d5;
-                border-radius: 10px;
-                overflow: hidden;
-            }
-            .llm-compare td { border: none; border-top: 1px solid #e8e0d5; }
-            .llm-compare td:first-child { border-top: none; }
             .llm-compare .answer-cell::before {
                 content: attr(data-llm);
                 display: block;
                 font-family: 'Segoe UI', Arial, sans-serif;
                 font-weight: 700;
                 color: #4a2c2c;
-                margin-bottom: 6px;
-                font-size: 0.9rem;
+                margin-bottom: 8px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -506,27 +498,26 @@ SELECT ?relatedwork WHERE {
 <table class="llm-compare">
     <thead>
         <tr>
-            <th class="col-prompt">Prompt</th>
-            <th class="col-llm">DeepSeek</th>
-            <th class="col-llm">Groq AI</th>
+            <th>DeepSeek</th>
+            <th>Groq AI</th>
         </tr>
     </thead>
     <tbody>
 
-        <!-- Row 1: Zero-shot / Zero-shot -->
-        <tr>
-            <td class="prompt-cell">
-                <span class="prompt-tag">Zero-shot</span>
-                <div class="prompt-body"><em>Where is menologio icon located?</em></div>
+        <!-- ===== ZERO-SHOT ===== -->
+        <tr class="prompt-heading">
+            <td colspan="2">
+                Zero-shot Prompt
+                <div class="prompt-desc"><em>Where is menologio icon located?</em></div>
             </td>
+        </tr>
+        <tr>
             <td class="answer-cell" data-llm="DeepSeek">
-                <span class="llm-name">DeepSeek</span>
                 <div class="llm-quote">
                     A Menologion icon (a calendar icon depicting saints for each day of the year) is located in a few notable places. Most prominently, a famous example is at the Monastery of Saint Catherine on Mount Sinai, Egypt. Another specific location is the Sampsonievsky Cathedral in Saint Petersburg, Russia. In this cathedral, a set of 12 large icons (one for each month) is displayed on the walls of the refectory: the first six months (January–June) are on the north wall, and the last six (July–December) are on the south wall. These icons typically serve as a visual calendar for the church year, illustrating the saints and feasts commemorated on each day.
                 </div>
             </td>
             <td class="answer-cell" data-llm="Groq AI">
-                <span class="llm-name">Groq AI</span>
                 <div class="llm-quote">
                     Menologio (or Menologium/Menologion) icons are Eastern Orthodox liturgical calendar icons depicting saints and fixed feasts arranged by month/day (or the full year). They are physical painted panels (often tempera on wood), not software/app icons.<br><br>
                     Notable locations of examples include:
@@ -539,25 +530,15 @@ SELECT ?relatedwork WHERE {
             </td>
         </tr>
 
-        <!-- Row 2: Follow-up / Few-shot -->
-        <tr>
-            <td class="prompt-cell">
-                <span class="prompt-tag">Follow-up</span>
-                <div class="prompt-body"><em>I am asking about menologio icon made in this years ca 1725-ca 1749</em></div>
-                <div class="prompt-body" style="margin-top:14px;">
-                    <span class="prompt-tag">Few-shot</span>
-                    You are an expert on Russian Orthodox icons and the collections of the Uffizi Galleries. Answer questions accurately and concisely, using only established art-historical facts.<br><br>
-                    <strong>Example 1:</strong><br>
-                    Q: What is Menologio?<br>
-                    A: It is a pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop around 1730–1750. Together they form a Menologium, an Orthodox liturgical calendar showing the fixed feast days and commemorations of saints for the entire year. Each panel measures 70 × 54 cm.<br><br>
-                    <strong>Example 2:</strong><br>
-                    Q: How is the year divided on the two panels?<br>
-                    A: The first panel covers the months from September to February; the second covers March to August. This follows the traditional Byzantine liturgical calendar, which begins on 1 September rather than 1 January. The scene of Christ's Resurrection / Descent into Hell appears at the top centre of both panels because it is the most important feast.<br><br>
-                    Now answer where is the icon from Uffizi Galleries located?
-                </div>
+        <!-- ===== FEW-SHOT ===== -->
+        <tr class="prompt-heading">
+            <td colspan="2">
+                Few-shot Prompt
+                <div class="prompt-desc">Role: expert on Russian Orthodox icons &amp; Uffizi collections. Two worked examples, then the question: <em>Where is the icon from Uffizi Galleries located?</em></div>
             </td>
+        </tr>
+        <tr>
             <td class="answer-cell" data-llm="DeepSeek">
-                <span class="llm-name">DeepSeek</span>
                 <div class="llm-quote">
                     The Menologio icon dating to approximately 1725–1749 is indeed in Palazzo Pitti in Florence.<br><br>
                     <strong>📍 Specific Location</strong><br>
@@ -570,7 +551,6 @@ SELECT ?relatedwork WHERE {
                 </div>
             </td>
             <td class="answer-cell" data-llm="Groq AI">
-                <span class="llm-name">Groq AI</span>
                 <div class="llm-quote">
                     The icon is located in the <strong>Museum of Russian Icons (Museo delle Icone Russe)</strong> within <strong>Palazzo Pitti</strong> in Florence.<br><br>
                     Specifically, it is displayed in the four large ground-floor rooms overlooking the courtyard, which were restored and opened as a permanent exhibition space.
@@ -578,61 +558,15 @@ SELECT ?relatedwork WHERE {
             </td>
         </tr>
 
-        <!-- Row 3: — / Few-shot Verification -->
-        <tr>
-            <td class="prompt-cell">
-                <span class="prompt-tag">Few-shot — Verification</span>
-                <div class="prompt-body">
-                    You are an expert on Russian Orthodox icons and the collections of the Uffizi Galleries. Answer questions accurately and concisely, using only established art-historical facts.<br><br>
-                    <strong>Example 1:</strong><br>
-                    Q: What is Menologio?<br>
-                    A: It is a pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop around 1730–1750. Together they form a Menologium, an Orthodox liturgical calendar showing the fixed feast days and commemorations of saints for the entire year. Each panel measures 70 × 54 cm.<br><br>
-                    <strong>Example 2:</strong><br>
-                    Q: How is the year divided on the two panels?<br>
-                    A: The first panel covers the months from September to February; the second covers March to August. This follows the traditional Byzantine liturgical calendar, which begins on 1 September rather than 1 January. The scene of Christ's Resurrection / Descent into Hell appears at the top centre of both panels because it is the most important feast.<br><br>
-                    Now answer where is the icon from Uffizi Galleries located?<br>
-                    A: The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.
-                </div>
-            </td>
-            <td class="answer-cell" data-llm="DeepSeek">
-                <span class="llm-name">DeepSeek</span>
-                <div class="llm-quote">
-                    <em>(No dedicated DeepSeek answer recorded for this prompt.)</em>
-                </div>
-            </td>
-            <td class="answer-cell" data-llm="Groq AI">
-                <span class="llm-name">Groq AI</span>
-                <div class="llm-quote">
-                    The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.
-                </div>
+        <!-- ===== CHAIN-OF-THOUGHT ===== -->
+        <tr class="prompt-heading">
+            <td colspan="2">
+                Chain-of-Thought Prompt
+                <div class="prompt-desc"><em>Explain your previous answer about location step by step.</em></div>
             </td>
         </tr>
-
-        <!-- Row 4: — / Chain-of-Thought -->
         <tr>
-            <td class="prompt-cell">
-                <span class="prompt-tag">Chain-of-Thought</span>
-                <div class="prompt-body">
-                    Here is my step-by-step reasoning:<br><br>
-                    <strong>Step 1 — Identify the object.</strong><br>
-                    You asked about a Menologio icon dated ca. 1725–1749. From the earlier exchange, this corresponds to the pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop, forming an Orthodox liturgical calendar for the full year.<br><br>
-                    <strong>Step 2 — Establish the owning institution.</strong><br>
-                    These icons belong to the <strong>Uffizi Galleries</strong> collection. The Uffizi Galleries is not a single building but a network of museums in Florence, including the Uffizi, Palazzo Pitti, and the Boboli Gardens.<br><br>
-                    <strong>Step 3 — Determine the specific venue within that network.</strong><br>
-                    The Russian icons in the Uffizi Galleries' holdings — including the Menologio — are housed in the <strong>Museum of Russian Icons (Museo delle Icone Russe)</strong>, which is located inside <strong>Palazzo Pitti</strong>, not the Uffizi building itself.<br><br>
-                    <strong>Step 4 — Pinpoint the room.</strong><br>
-                    Within Palazzo Pitti, the Museum of Russian Icons occupies four large ground-floor rooms with 17th-century frescoes, situated around the courtyard.<br><br>
-                    <strong>Conclusion:</strong> The Menologio icon is located in the Museum of Russian Icons, Palazzo Pitti, Florence — part of the Uffizi Galleries system.
-                </div>
-            </td>
             <td class="answer-cell" data-llm="DeepSeek">
-                <span class="llm-name">DeepSeek</span>
-                <div class="llm-quote">
-                    <em>(No dedicated DeepSeek answer recorded for this prompt.)</em>
-                </div>
-            </td>
-            <td class="answer-cell" data-llm="Groq AI">
-                <span class="llm-name">Groq AI</span>
                 <div class="llm-quote">
                     Here's a clear step-by-step explanation of the previous answer about the location:<br><br>
                     <strong>Step 1: Identify the object</strong><br>
@@ -648,6 +582,20 @@ SELECT ?relatedwork WHERE {
                     <strong>Final combined answer</strong><br>
                     Therefore: The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.<br><br>
                     This matches the established art-historical facts from the Uffizi's own documentation.
+                </div>
+            </td>
+            <td class="answer-cell" data-llm="Groq AI">
+                <div class="llm-quote">
+                    Here is my step-by-step reasoning:<br><br>
+                    <strong>Step 1 — Identify the object.</strong><br>
+                    You asked about a Menologio icon dated ca. 1725–1749. From the earlier exchange, this corresponds to the pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop, forming an Orthodox liturgical calendar for the full year.<br><br>
+                    <strong>Step 2 — Establish the owning institution.</strong><br>
+                    These icons belong to the <strong>Uffizi Galleries</strong> collection. The Uffizi Galleries is not a single building but a network of museums in Florence, including the Uffizi, Palazzo Pitti, and the Boboli Gardens.<br><br>
+                    <strong>Step 3 — Determine the specific venue within that network.</strong><br>
+                    The Russian icons in the Uffizi Galleries' holdings — including the Menologio — are housed in the <strong>Museum of Russian Icons (Museo delle Icone Russe)</strong>, which is located inside <strong>Palazzo Pitti</strong>, not the Uffizi building itself.<br><br>
+                    <strong>Step 4 — Pinpoint the room.</strong><br>
+                    Within Palazzo Pitti, the Museum of Russian Icons occupies four large ground-floor rooms with 17th-century frescoes, situated around the courtyard.<br><br>
+                    <strong>Conclusion:</strong> The Menologio icon is located in the Museum of Russian Icons, Palazzo Pitti, Florence — part of the Uffizi Galleries system.
                 </div>
             </td>
         </tr>
@@ -688,10 +636,6 @@ SELECT ?relatedwork WHERE {
 
 <hr>
 
-<div class="footer-note">
-    <p>📄 KE4H Project – Cultural Heritage and Semantic Web<br>
-    <strong>Icon:</strong> Menologio (Palazzo Pitti, Florence, Italy)</p>
-</div>
 
 </body>
 </html>
