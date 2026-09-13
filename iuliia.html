@@ -231,200 +231,345 @@
             .navbar { flex-direction: column; align-items: stretch; }
             .navbar a { width: 100%; text-align: center; box-sizing: border-box; }
         }
+
+        /* ===== NEW: prettified query & comparison blocks ===== */
+        .query-card {
+            background: #ffffff;
+            border: 1px solid #e0d8cc;
+            border-left: 6px solid #b8860b;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 24px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .query-card .query-label {
+            display: inline-block;
+            background: #4a2c2c;
+            color: #f5f0e8;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .query-card .query-desc {
+            font-size: 0.97rem;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .query-card .code-block {
+            margin-top: 6px;
+        }
+        .llm-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 24px 0;
+            font-size: 0.92rem;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .llm-table th {
+            background: #4a2c2c;
+            color: #f5f0e8;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+        }
+        .llm-table th:first-child {
+            border-top-left-radius: 10px;
+        }
+        .llm-table th:last-child {
+            border-top-right-radius: 10px;
+        }
+        .llm-table td {
+            border: 1px solid #e8e0d5;
+            border-top: none;
+            padding: 14px 16px;
+            vertical-align: top;
+        }
+        .llm-table tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+        .llm-table tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+        .llm-table tr:nth-child(even) td {
+            background-color: #faf7f2;
+        }
+        .llm-table tr:hover td {
+            background-color: #f3ede3;
+        }
+        .llm-name {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 700;
+            color: #4a2c2c;
+            white-space: nowrap;
+        }
+        .prompt-tag {
+            display: inline-block;
+            background: #ece8e0;
+            color: #4a2c2c;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .llm-quote {
+            background: #f7f3ec;
+            border-left: 3px solid #b8860b;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin: 10px 0;
+            color: #3a3a3a;
+        }
+        .llm-quote em {
+            color: #6b2e2e;
+        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="index.html">Homepage</a>
-        <a href="Lola.html">Daria</a>
-        <a href="iuliia.html" class="active">Iuliia</a>
-        <a href="Marina.html">Marina</a>
-        <a href="report.html">Report</a>
+
+<!-- ===== NAVIGATION ===== -->
+<div class="navbar">
+    <a href="index.html">Homepage</a>
+    <a href="Lola.html">Daria</a>
+    <a href="iuliia.html" class="active">Iuliia</a>
+    <a href="Marina.html">Marina</a>
+    <a href="report.html">Report</a>
+</div>
+
+<h1>Menologio</h1>
+
+<p>This two-paneled Menologio icon is one of the most notable works in the historic collection of 78 Russian icons acquired by the Medici family. It functions as a visual liturgical calendar of the Orthodox Church, divided into two panels corresponding to the two halves of the year.</p>
+
+<p>The icon was created in a provincial Russian workshop between 1730–1750, modeled on an annual series of saints engraved in Moscow in 1730. The most important Christian feast, the Resurrection of Christ, appears prominently in both panels at the top center. The Menologio came to Florence during the Habsburg-Lorraine dynasty and is now permanently displayed at the Palazzo Pitti museum.</p>
+
+<div class="comparison-box">
+    <div>
+        <img class="icon-img" src="https://www.datocms-assets.com/103094/1688661915-5a.jpg?auto=format%2Ccompress&cs=srgb&max-w=800" alt="Menologio icon panel A">
     </div>
+    <div>
+        <img class="icon-img" src="https://www.datocms-assets.com/103094/1688661925-5b.jpg?auto=format%2Ccompress&cs=srgb&max-w=800" alt="Menologio icon panel B">
+    </div>
+</div>
 
-    <div class="content">
-        <h1>Menologio</h1>
-        <p>This two-paneled Menologio icon is one of the most notable works in the historic collection of 78 Russian icons acquired by the Medici family. It functions as a visual liturgical calendar of the Orthodox Church, divided into two panels corresponding to the two halves of the year.</p>
-        <p>The icon was created in a provincial Russian workshop between 1730–1750, modeled on an annual series of saints engraved in Moscow in 1730. The most important Christian feast, the Resurrection of Christ, appears prominently in both panels at the top center. The Menologio came to Florence during the Habsburg-Lorraine dynasty and is now permanently displayed at the Palazzo Pitti museum.</p>
+<h2>Step 1 — Query to identify the Menologio icon in the ArCo database</h2>
 
-        <div class="comparison-box">
-            <div>
-                <img class="icon-img" src="https://www.datocms-assets.com/103094/1688661915-5a.jpg" alt="Menologio panel from September to February, Palazzo Pitti">
-                <p class="figure-cap">September to February. <a class="inline" href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911" target="_blank" rel="noopener">ArCo 0900281911</a></p>
-            </div>
-            <div>
-                <img class="icon-img" src="https://www.datocms-assets.com/103094/1688661925-5b.jpg" alt="Menologio panel from March to August, Palazzo Pitti">
-                <p class="figure-cap">March to August. <a class="inline" href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910" target="_blank" rel="noopener">ArCo 0900281910</a></p>
-            </div>
-        </div>
+<p>I started the process of identifying my specific Menologio by executing this query:</p>
 
-        <h2>Step 1. Query to identify Menologio icon in the ArCo database</h2>
-        <p>I started the process of identifying my specific Menologio by executing this query:</p>
-        <pre class="code-block">PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX arco-arco: <https://w3id.org/arco/ontology/arco/>
-
+<div class="query-card">
+    <span class="query-label">SPARQL Query</span>
+    <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco-arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
 SELECT ?icon ?label WHERE {
-  ?icon a/rdfs:subClassOf* arco-arco:CulturalProperty .
+  ?icon a/rdfs:subClassOf* arco-arco:CulturalProperty . 
   ?icon rdfs:label ?label .
   FILTER(REGEX(?label, "menologio", "i"))
 }
-LIMIT 100</pre>
-        <p>Result of this search was Menologio in the ArCo database. However, I found out that there are two different links leading to two parts of my piece of art: first is icon panel from March to August (<a class="inline" href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910" target="_blank" rel="noopener">Link</a>) and the second one is from September to February (<a class="inline" href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911" target="_blank" rel="noopener">Link</a>).</p>
-        <ul class="link-list">
-            <li><a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910" target="_blank" rel="noopener">March–August panel — ArCo 0900281910</a></li>
-            <li><a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281910.html" target="_blank" rel="noopener">March–August panel — LodView 0900281910</a></li>
-            <li><a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911" target="_blank" rel="noopener">September–February panel — ArCo 0900281911</a></li>
-            <li><a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281911.html" target="_blank" rel="noopener">September–February panel — LodView 0900281911</a></li>
-            <li><a href="https://dati.beniculturali.it/sparql" target="_blank" rel="noopener">ArCo SPARQL endpoint</a></li>
-        </ul>
+LIMIT 100</div>
+</div>
 
-        <h2>Step 2. Identifying the gaps in the knowledge</h2>
-        <p>I needed to identify the gaps and quickly found some. For example, the English name of the icon is not mentioned. Second one is that 2 different parts of one icon are not connected to each other.</p>
-        <p>As we can see from this screenshot, the first part of the icon is related only to itself, not to the second part which has this unique identifier: <strong>0900281910</strong>.</p>
-        <ul class="link-list">
-            <li><a href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281910.html" target="_blank" rel="noopener">Record of 0900281910 (LodView)</a></li>
-        </ul>
-        <p>To check this I made two queries. One was to ask about whether there is an object called “Menologium”, English name of my chosen icon:</p>
-        <pre class="code-block">PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX arco-arco: <https://w3id.org/arco/ontology/arco/>
+<p>Result of this search was Menologio in the Arco database. However, I found out that there are two different links leading to two parts of my piece of art: first is icon panel from March to August (<a class="inline" href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281910.html" target="_blank" rel="noopener noreferrer">Link</a>) and the second one is from September to February (<a class="inline" href="https://dati.cultura.gov.it/lodview-arco/resource/HistoricOrArtisticProperty/0900281911.html" target="_blank" rel="noopener noreferrer">Link</a>).</p>
+
+<h2>Step 2 — Identifying the gaps in the knowledge</h2>
+
+<p>I needed to identify the gaps and quickly found some. For example, the English name of the icon is not mentioned. Second one is that 2 different parts of one icon are not connected to each other.</p>
+
+<p>As we can see from this screenshot, the first part of the icon is related only to itself, not to the second part which has this unique identifier: 0900281910.</p>
+
+<p>To check this I made two queries. One was to ask about whether there is an object called 'Menologium', English name of my chosen icon.</p>
+
+<div class="query-card">
+    <span class="query-label">SPARQL Query</span>
+    <div class="code-block">PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX arco-arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
 
 SELECT ?icon ?label WHERE {
-  ?icon a/rdfs:subClassOf* arco-arco:CulturalProperty .
+  ?icon a/rdfs:subClassOf* arco-arco:CulturalProperty . 
   ?icon rdfs:label ?label .
   FILTER(REGEX(?label, "Menologium", "i"))
 }
-LIMIT 100</pre>
-        <p>This query gave me no results (<a class="inline" href="https://dati.beniculturali.it/sparql" target="_blank" rel="noopener">link</a>).</p>
-        <p>The second one was to check if the first panel of the icon was connected with the second one in the database:</p>
-        <pre class="code-block">PREFIX arco: <https://w3id.org/arco/ontology/arco/>
-PREFIX core: <https://w3id.org/arco/ontology/core/>
+LIMIT 100</div>
+</div>
+
+<p>This query gave me no results (<a class="inline" href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=PREFIX+rdfs%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0D%0APREFIX+arco-arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E%0D%0A%0D%0ASELECT+%3Ficon+%3Flabel+WHERE+%7B%0D%0A++%3Ficon+a%2Frdfs%3AsubClassOf*+arco-arco%3ACulturalProperty+.+%0D%0A++%3Ficon+rdfs%3Alabel+%3Flabel+.%0D%0A++FILTER%28REGEX%28%3Flabel%2C+%22Menologium%22%2C+%22i%22%29%29%0D%0A%7D%0D%0ALIMIT+100%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" rel="noopener noreferrer">link</a>).</p>
+
+<p>The second one was to check if the first panel of the icon was connected with the second one in the database.</p>
+
+<div class="query-card">
+    <span class="query-label">SPARQL Query</span>
+    <div class="code-block">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt; 
+PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt; 
 SELECT ?relatedwork WHERE {
-  <https://dati.cultura.gov.it/resource/HistoricOrArtisticProperty/0900289175>
-    core:isRelatedTo ?relatedwork .
-}</pre>
-        <p>This one also turned out empty (<a class="inline" href="https://dati.beniculturali.it/sparql" target="_blank" rel="noopener">link</a>).</p>
+  &lt;https://dati.cultura.gov.it/resource/HistoricOrArtisticProperty/0900289175&gt; core:isRelatedTo ?relatedwork .
+}</div>
+</div>
 
-        <h2>Step 3. Enrichment and comparison using LLM models</h2>
+<p>This one also turned out empty (<a class="inline" href="https://dati.cultura.gov.it/sparql?default-graph-uri=&query=%0D%0APREFIX+arco%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Farco%2F%3E+%0D%0APREFIX+core%3A+%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fontology%2Fcore%2F%3E+%0D%0ASELECT+%3Frelatedwork+WHERE+%7B%0D%0A%3Chttps%3A%2F%2Fw3id.org%2Farco%2Fresource%2FHistoricOrArtisticProperty%2F0900281910%3E+core%3AisRelatedTo+%3Frelatedwork+.%0D%0A%7D%0D%0A%0D%0A&format=text%2Fhtml&timeout=0&signal_void=on" target="_blank" rel="noopener noreferrer">link</a>).</p>
 
-        <h3>Zero-shot prompting</h3>
-        <p>Prompt: <em>Where is Menologio icon located?</em> — then a follow-up: <em>I am asking about Menologio icon made in the years ca. 1725–ca. 1749.</em></p>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>DeepSeek — zero-shot</th>
-                        <th>Groq AI — zero-shot</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p>A Menologion icon (a calendar icon depicting saints for each day of the year) is located in a few notable places. Most prominently, a famous example is at the Monastery of Saint Catherine on Mount Sinai, Egypt. Another specific location is the Sampsonievsky Cathedral in Saint Petersburg, Russia. In this cathedral, a set of 12 large icons (one for each month) is displayed on the walls of the refectory: the first six months (January–June) are on the north wall, and the last six (July–December) are on the south wall. These icons typically serve as a visual calendar for the church year, illustrating the saints and feasts commemorated on each day.</p>
-                            <p><strong>After the date constraint (ca. 1725–ca. 1749):</strong> The Menologio icon dating to approximately 1725–1749 is indeed in Palazzo Pitti in Florence.</p>
-                            <p><strong>Specific location.</strong> It is part of the Museum of Russian Icons (Museo delle Icone Russe) located within Palazzo Pitti. The museum occupies four large ground-floor rooms with 17th-century frescoes, and the Menologio is considered one of the most significant works in the collection.</p>
-                            <p><strong>Details of the icon.</strong> The Menologio is actually composed of two large panels that together form a calendar of Orthodox religious holidays. Structure: each panel consists of 20 horizontal rows depicting sacred scenes and figures of saints, with each figure identified by an inscription. Content: it covers the religious festivals divided by semesters (September–February and March–August). Collection: it belongs to the Museum of Russian Icons’ collection of 78 icons, which is the oldest such collection outside of Russia, assembled by the Medici and Lorraine families in the 18th century.</p>
-                        </td>
-                        <td>
-                            <p>Menologio (or Menologium/Menologion) icons are Eastern Orthodox liturgical calendar icons depicting saints and fixed feasts arranged by month/day (or the full year). They are physical painted panels (often tempera on wood), not software/app icons.</p>
-                            <p>Notable locations of examples include:</p>
-                            <p>Uffizi Galleries / Pitti Palace (Museum of Russian Icons), Florence, Italy: a pair of 18th-century Central Russian Menologium panels (inventory 1890 nn. 5954–5955). One covers September–February; the other the rest of the year. They follow the Byzantine liturgical calendar and arrived in Florence before 1771.</p>
-                            <p>Simonopetra Monastery, Mount Athos, Greece: a large 19th-century Russian Menologion icon (Panagion), roughly 158 × 139 cm, showing all twelve months plus additional scenes. Tradition links it to a gift from Tsar Nicholas II.</p>
-                            <p>Other examples appear in collections such as the Castle Museum in Łańcut (Poland), various Russian/Orthodox museum holdings, and private or church collections (e.g., monthly panels or fragments).</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<h2>Step 3 — Enrichment and comparison using LLM models</h2>
 
-        <h3>Few-shot prompting</h3>
-        <p>Shared expert prompt and examples, then: <em>Now answer where is the icon from Uffizi Galleries located?</em></p>
-        <pre class="code-block-light">You are an expert on Russian Orthodox icons and the collections of the Uffizi Galleries. Answer questions accurately and concisely, using only established art-historical facts.
+<h3>DeepSeek</h3>
 
-Example 1:
-Q: What is Menologio?
-A: It is a pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop around 1730–1750. Together they form a Menologium, an Orthodox liturgical calendar showing the fixed feast days and commemorations of saints for the entire year. Each panel measures 70 × 54 cm.
+<div class="query-card">
+    <span class="query-label">Zero-shot Prompt</span>
+    <div class="code-block-light"><em>Where is menologio icon located?</em></div>
+</div>
 
-Example 2:
-Q: How is the year divided on the two panels?
-A: The first panel covers the months from September to February; the second covers March to August. This follows the traditional Byzantine liturgical calendar, which begins on 1 September rather than 1 January. The scene of Christ’s Resurrection / Descent into Hell appears at the top centre of both panels because it is the most important feast.
+<div class="llm-quote">
+    A Menologion icon (a calendar icon depicting saints for each day of the year) is located in a few notable places. Most prominently, a famous example is at the Monastery of Saint Catherine on Mount Sinai, Egypt. Another specific location is the Sampsonievsky Cathedral in Saint Petersburg, Russia. In this cathedral, a set of 12 large icons (one for each month) is displayed on the walls of the refectory: the first six months (January–June) are on the north wall, and the last six (July–December) are on the south wall. These icons typically serve as a visual calendar for the church year, illustrating the saints and feasts commemorated on each day.
+</div>
 
-Now answer where is the icon from Uffizi Galleries located?</pre>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>DeepSeek — few-shot</th>
-                        <th>Groq AI — few-shot</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>The icon is located in the Museum of Russian Icons (Museo delle Icone Russe) within Palazzo Pitti in Florence. Specifically, it is displayed in the four large ground-floor rooms overlooking the courtyard, which were restored and opened as a permanent exhibition space.</td>
-                        <td>A: The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="query-card">
+    <span class="query-label">Follow-up Prompt</span>
+    <div class="code-block-light"><em>I am asking about menologio icon made in this years ca 1725-ca 1749</em></div>
+</div>
 
-        <h3>Chain-of-thought prompting</h3>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>DeepSeek — chain of thought</th>
-                        <th>Groq AI — chain of thought</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <p><strong>Step 1 — Identify the object.</strong> You asked about a Menologio icon dated ca. 1725–1749. From the earlier exchange, this corresponds to the pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop, forming an Orthodox liturgical calendar for the full year.</p>
-                            <p><strong>Step 2 — Establish the owning institution.</strong> These icons belong to the Uffizi Galleries collection. The Uffizi Galleries is not a single building but a network of museums in Florence, including the Uffizi, Palazzo Pitti, and the Boboli Gardens.</p>
-                            <p><strong>Step 3 — Determine the specific venue.</strong> The Russian icons in the Uffizi Galleries’ holdings — including the Menologio — are housed in the Museum of Russian Icons (Museo delle Icone Russe), which is located inside Palazzo Pitti, not the Uffizi building itself.</p>
-                            <p><strong>Step 4 — Pinpoint the room.</strong> Within Palazzo Pitti, the Museum of Russian Icons occupies four large ground-floor rooms with 17th-century frescoes, situated around the courtyard.</p>
-                            <p><strong>Conclusion:</strong> The Menologio icon is located in the Museum of Russian Icons, Palazzo Pitti, Florence — part of the Uffizi Galleries system.</p>
-                        </td>
-                        <td>
-                            <p>Explain your previous answer about location step by step.</p>
-                            <p><strong>Step 1:</strong> Identify the object. The work in question is the Palazzo Pitti Menologio (also called Menologium), the pair of Russian Orthodox calendar icons with inventory numbers 1890 nn. 5954 and 5955.</p>
-                            <p><strong>Step 2:</strong> Determine the owning institution. These icons belong to the collections of the Uffizi Galleries in Florence.</p>
-                            <p><strong>Step 3:</strong> Find the specific museum/section. Within the Uffizi Galleries, the Russian icons (including the Menologio) are exhibited in a dedicated space called the Museum of Russian Icons.</p>
-                            <p><strong>Step 4:</strong> Locate the physical building and floor. The Museum of Russian Icons is installed on the ground floor of Palazzo Pitti (the Pitti Palace), which is part of the Uffizi complex.</p>
-                            <p><strong>Step 5:</strong> Confirm the city and country. Palazzo Pitti is in Florence, Italy.</p>
-                            <p><strong>Final combined answer.</strong> Therefore: The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy. This matches the established art-historical facts from the Uffizi’s own documentation.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="llm-quote">
+    The Menologio icon dating to approximately 1725–1749 is indeed in Palazzo Pitti in Florence.<br><br>
+    <strong>📍 Specific Location</strong><br>
+    It is part of the Museum of Russian Icons (Museo delle Icone Russe) located within Palazzo Pitti. The museum occupies four large ground-floor rooms with 17th-century frescoes, and the Menologio is considered one of the most significant works in the collection.<br><br>
+    <strong>📜 Details of the Icon</strong><br>
+    The Menologio is actually composed of two large panels that together form a calendar of Orthodox religious holidays.<br>
+    <strong>Structure:</strong> Each panel consists of 20 horizontal rows depicting sacred scenes and figures of saints, with each figure identified by an inscription.<br>
+    <strong>Content:</strong> It covers the religious festivals divided by semesters (September–February and March–August).<br>
+    <strong>Collection:</strong> It belongs to the Museum of Russian Icons' collection of 78 icons, which is the oldest such collection outside of Russia, assembled by the Medici and Lorraine families in the 18th century.
+</div>
 
-        <h2>Step 4. Creating triples and enriching ontology</h2>
-        <p>A possible solution to these information gaps would be the addition of RDF triples to connect objects and enrich the ontology.</p>
-        <p>For example, the property <code>core:isRelatedTo</code> could be used to establish relationships between two parts of the icon:</p>
-        <pre class="code-block">@prefix arco-core: <https://w3id.org/arco/ontology/core/> .
+<h3>Groq AI</h3>
 
-<https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910>
-    arco-core:isRelatedTo <https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911> .
+<div class="query-card">
+    <span class="query-label">Zero-shot Prompt</span>
+    <div class="code-block-light"><em>Where is menologio icon located?</em></div>
+</div>
 
-<https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911>
-    arco-core:isRelatedTo <https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910> .</pre>
-        <p>The second RDF triple connects the Menologio icon to Palazzo Pitti as location:</p>
-        <pre class="code-block">@prefix cis: <http://dati.beniculturali.it/cis/> .
+<div class="llm-quote">
+    Menologio (or Menologium/Menologion) icons are Eastern Orthodox liturgical calendar icons depicting saints and fixed feasts arranged by month/day (or the full year). They are physical painted panels (often tempera on wood), not software/app icons.<br><br>
+    Notable locations of examples include:
+    <ul>
+        <li><strong>Uffizi Galleries / Pitti Palace (Museum of Russian Icons), Florence, Italy:</strong> A pair of 18th-century Central Russian Menologium panels (inventory 1890 nn. 5954–5955). One covers September–February; the other the rest of the year. They follow the Byzantine liturgical calendar and arrived in Florence before 1771.</li>
+        <li><strong>Simonopetra Monastery, Mount Athos, Greece:</strong> A large 19th-century Russian Menologion icon (Panagion), roughly 158 × 139 cm, showing all twelve months plus additional scenes. Tradition links it to a gift from Tsar Nicholas II.</li>
+        <li>Other examples appear in collections such as the Castle Museum in Łańcut (Poland), various Russian/Orthodox museum holdings, and private or church collections (e.g., monthly panels or fragments).</li>
+    </ul>
+</div>
 
-<https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910>
-    cis:hasSite <https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69> .
+<div class="query-card">
+    <span class="query-label">Few-shot Prompt</span>
+    <div class="code-block-light">You are an expert on Russian Orthodox icons and the collections of the Uffizi Galleries. Answer questions accurately and concisely, using only established art-historical facts.<br><br>
+    <strong>Example 1:</strong><br>
+    Q: What is Menologio?<br>
+    A: It is a pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop around 1730–1750. Together they form a Menologium, an Orthodox liturgical calendar showing the fixed feast days and commemorations of saints for the entire year. Each panel measures 70 × 54 cm.<br><br>
+    <strong>Example 2:</strong><br>
+    Q: How is the year divided on the two panels?<br>
+    A: The first panel covers the months from September to February; the second covers March to August. This follows the traditional Byzantine liturgical calendar, which begins on 1 September rather than 1 January. The scene of Christ's Resurrection / Descent into Hell appears at the top centre of both panels because it is the most important feast.<br><br>
+    Now answer where is the icon from Uffizi Galleries located?</div>
+</div>
 
-<https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911>
-    cis:hasSite <https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69> .</pre>
+<div class="llm-quote">
+    The icon is located in the <strong>Museum of Russian Icons (Museo delle Icone Russe)</strong> within <strong>Palazzo Pitti</strong> in Florence.<br><br>
+    Specifically, it is displayed in the four large ground-floor rooms overlooking the courtyard, which were restored and opened as a permanent exhibition space.
+</div>
 
-        <ul class="link-list">
-            <li><a href="https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69" target="_blank" rel="noopener">Palazzo Pitti — ArCo Site</a></li>
-            <li><a href="https://www.uffizi.it/en/artworks/menologium-central-russia" target="_blank" rel="noopener">Uffizi Galleries — Menologium, Central Russia</a></li>
-            <li><a href="https://www.uffizi.it/opere/menologio-russia-centrale" target="_blank" rel="noopener">Gallerie degli Uffizi — Menologio (IT)</a></li>
-            <li><a href="https://www.uffizi.it/en/pitti-palace/museum-of-russian-icons" target="_blank" rel="noopener">Museum of Russian Icons, Pitti Palace</a></li>
-        </ul>
+<div class="query-card">
+    <span class="query-label">Few-shot Prompt — Verification</span>
+    <div class="code-block-light">You are an expert on Russian Orthodox icons and the collections of the Uffizi Galleries. Answer questions accurately and concisely, using only established art-historical facts.<br><br>
+    <strong>Example 1:</strong><br>
+    Q: What is Menologio?<br>
+    A: It is a pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop around 1730–1750. Together they form a Menologium, an Orthodox liturgical calendar showing the fixed feast days and commemorations of saints for the entire year. Each panel measures 70 × 54 cm.<br><br>
+    <strong>Example 2:</strong><br>
+    Q: How is the year divided on the two panels?<br>
+    A: The first panel covers the months from September to February; the second covers March to August. This follows the traditional Byzantine liturgical calendar, which begins on 1 September rather than 1 January. The scene of Christ's Resurrection / Descent into Hell appears at the top centre of both panels because it is the most important feast.<br><br>
+    Now answer where is the icon from Uffizi Galleries located?<br>
+    A: The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.</div>
+</div>
 
-    
-    </div>
+<div class="llm-quote">
+    The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.
+</div>
+
+<div class="query-card">
+    <span class="query-label">Chain-of-Thought Prompt</span>
+    <div class="code-block-light">Here is my step-by-step reasoning:<br><br>
+    <strong>Step 1 — Identify the object.</strong><br>
+    You asked about a Menologio icon dated ca. 1725–1749. From the earlier exchange, this corresponds to the pair of tempera-on-panel icons (inventory 1890 nn. 5954 and 5955) painted in a Central Russian workshop, forming an Orthodox liturgical calendar for the full year.<br><br>
+    <strong>Step 2 — Establish the owning institution.</strong><br>
+    These icons belong to the <strong>Uffizi Galleries</strong> collection. The Uffizi Galleries is not a single building but a network of museums in Florence, including the Uffizi, Palazzo Pitti, and the Boboli Gardens.<br><br>
+    <strong>Step 3 — Determine the specific venue within that network.</strong><br>
+    The Russian icons in the Uffizi Galleries' holdings — including the Menologio — are housed in the <strong>Museum of Russian Icons (Museo delle Icone Russe)</strong>, which is located inside <strong>Palazzo Pitti</strong>, not the Uffizi building itself.<br><br>
+    <strong>Step 4 — Pinpoint the room.</strong><br>
+    Within Palazzo Pitti, the Museum of Russian Icons occupies four large ground-floor rooms with 17th-century frescoes, situated around the courtyard.<br><br>
+    <strong>Conclusion:</strong> The Menologio icon is located in the Museum of Russian Icons, Palazzo Pitti, Florence — part of the Uffizi Galleries system.</div>
+</div>
+
+<h3>Chain-of-Thought Prompt (Explanation)</h3>
+
+<div class="query-card">
+    <span class="query-label">Prompt</span>
+    <div class="code-block-light"><em>Explain your previous answer about location step by step</em></div>
+</div>
+
+<div class="llm-quote">
+    Here's a clear step-by-step explanation of the previous answer about the location:<br><br>
+    <strong>Step 1: Identify the object</strong><br>
+    The work in question is the Palazzo Pitti Menologio (also called Menologium), the pair of Russian Orthodox calendar icons with inventory numbers 1890 nn. 5954 and 5955.<br><br>
+    <strong>Step 2: Determine the owning institution</strong><br>
+    These icons belong to the collections of the Uffizi Galleries in Florence.<br><br>
+    <strong>Step 3: Find the specific museum/section</strong><br>
+    Within the Uffizi Galleries, the Russian icons (including the Menologio) are exhibited in a dedicated space called the Museum of Russian Icons.<br><br>
+    <strong>Step 4: Locate the physical building and floor</strong><br>
+    The Museum of Russian Icons is installed on the ground floor of Palazzo Pitti (the Pitti Palace), which is part of the Uffizi complex.<br><br>
+    <strong>Step 5: Confirm the city and country</strong><br>
+    Palazzo Pitti is in Florence, Italy.<br><br>
+    <strong>Final combined answer</strong><br>
+    Therefore: The Palazzo Pitti Menologio is located in the Museum of Russian Icons on the ground floor of Palazzo Pitti (Uffizi Galleries) in Florence, Italy.<br><br>
+    This matches the established art-historical facts from the Uffizi's own documentation.
+</div>
+
+<h2>Step 4 — Creating triples and enriching ontology</h2>
+
+<p>A possible solution to these information gaps would be the addition of RDF triples to connect objects and enrich the ontology.</p>
+
+<p>For example, the property <code>core:isRelatedTo</code> could be used to establish relationships between two parts of the icon.</p>
+
+<div class="query-card">
+    <span class="query-label">RDF Triples</span>
+    <div class="code-block">@prefix arco-core: &lt;https://w3id.org/arco/ontology/core/&gt; .
+
+&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910&gt;
+    arco-core:isRelatedTo &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt; .
+
+&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt;
+    arco-core:isRelatedTo &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910&gt; .</div>
+</div>
+
+<p>The second RDF triple connects the Menologio icon to Palazzo Pitti as location.</p>
+
+<div class="query-card">
+    <span class="query-label">RDF Triples</span>
+    <div class="code-block">@prefix cis: &lt;http://dati.beniculturali.it/cis/&gt; .
+
+&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281910&gt;
+    cis:hasSite &lt;https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69&gt; .
+
+&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt;
+    cis:hasSite &lt;https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69&gt; .</div>
+</div>
+
+<hr>
+
+
 </body>
 </html>
