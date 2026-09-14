@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Portrait of Ignazio Fumagalli – KE4H Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madonna of Kazan – KE4H Project</title>
     <style>
-        /* --- GLOBAL STYLES (consistent with team page) --- */
-        * {
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
@@ -18,7 +14,6 @@
             background-color: #faf9f7;
             color: #1e1e1e;
         }
-        /* --- NAVIGATION --- */
         .navbar {
             background-color: #4a2c2c;
             padding: 15px 20px;
@@ -46,7 +41,6 @@
             background-color: #b8860b;
             color: white;
         }
-        /* --- HEADINGS --- */
         h1 {
             font-size: 2.2rem;
             border-bottom: 3px solid #8b1a1a;
@@ -76,7 +70,6 @@
             margin-bottom: 1.2rem;
             text-align: justify;
         }
-        /* --- COMPONENTS --- */
         .event-meta {
             background-color: #ece8e0;
             padding: 15px 20px;
@@ -84,43 +77,6 @@
             border-left: 6px solid #b8860b;
             margin: 20px 0;
         }
-        .summary-box {
-            background-color: #e8e2d8;
-            padding: 15px 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            border: 1px solid #c9bdb0;
-        }
-        .summary-box strong {
-            color: #4a2c2c;
-        }
-        .comparison-box {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-        .comparison-box > div {
-            flex: 1;
-            min-width: 250px;
-            background-color: #f1ede6;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #b8860b;
-        }
-        .badge {
-            display: inline-block;
-            background-color: #8b1a1a;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .badge-success {
-            background-color: #2d6a2d;
-        }
-        /* --- TABLES --- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -147,11 +103,6 @@
         tr:hover {
             background-color: #f0ebe2;
         }
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        /* --- CODE BLOCKS --- */
         .code-block {
             background-color: #1e1e1e;
             color: #e0d6c0;
@@ -161,7 +112,7 @@
             font-size: 0.85rem;
             overflow-x: auto;
             white-space: pre-wrap;
-            word-break: break-all;
+            word-break: break-word;
             margin: 1rem 0;
             border-left: 5px solid #b8860b;
         }
@@ -174,11 +125,10 @@
             font-size: 0.85rem;
             overflow-x: auto;
             white-space: pre-wrap;
-            word-break: break-all;
+            word-break: break-word;
             margin: 1rem 0;
             border-left: 5px solid #4a2c2c;
         }
-        /* --- LISTS --- */
         .link-list {
             list-style: none;
             padding: 0;
@@ -194,10 +144,35 @@
             color: #6b2e2e;
             text-decoration: none;
             font-weight: 500;
+            word-break: break-all;
         }
         .link-list a:hover {
             text-decoration: underline;
             color: #8b1a1a;
+        }
+        .summary-box {
+            background-color: #e8e2d8;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #c9bdb0;
+        }
+        .summary-box strong {
+            color: #4a2c2c;
+        }
+        .comparison-box {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .comparison-box > div {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f1ede6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #b8860b;
         }
         hr {
             border: 1px solid #d4cdc2;
@@ -212,16 +187,156 @@
             padding-top: 1rem;
             text-align: center;
         }
-        /* --- RESPONSIVE --- */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #8b1a1a;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        a.inline {
+            color: #6b2e2e;
+            font-weight: 600;
+        }
+        a.inline:hover {
+            color: #8b1a1a;
+        }
+        img.icon-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #d4cdc2;
+            background: #2a1c12;
+        }
+        .figure-cap {
+            font-size: 0.9rem;
+            color: #5a4f44;
+            margin: 0.6rem 0 0;
+            font-style: italic;
+            text-align: left;
+        }
         @media (max-width: 600px) {
             body { padding: 12px; }
             h1 { font-size: 1.8rem; }
-            .code-block { font-size: 0.75rem; padding: 12px; }
+            .code-block, .code-block-light { font-size: 0.75rem; padding: 12px; }
             table { font-size: 0.85rem; }
             td, th { padding: 6px; }
             .comparison-box { flex-direction: column; }
-            .navbar { flex-direction: column; align-items: center; }
-            .navbar a { width: 100%; text-align: center; }
+            .navbar { flex-direction: column; align-items: stretch; }
+            .navbar a { width: 100%; text-align: center; box-sizing: border-box; }
+        }
+
+        /* ===== prettified query & comparison blocks ===== */
+        .query-card {
+            background: #ffffff;
+            border: 1px solid #e0d8cc;
+            border-left: 6px solid #b8860b;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 24px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .query-card .query-label {
+            display: inline-block;
+            background: #4a2c2c;
+            color: #f5f0e8;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .query-card .query-desc {
+            font-size: 0.97rem;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .query-card .code-block {
+            margin-top: 6px;
+        }
+        .llm-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 24px 0;
+            font-size: 0.92rem;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .llm-table th {
+            background: #4a2c2c;
+            color: #f5f0e8;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+        }
+        .llm-table th:first-child {
+            border-top-left-radius: 10px;
+        }
+        .llm-table th:last-child {
+            border-top-right-radius: 10px;
+        }
+        .llm-table td {
+            border: 1px solid #e8e0d5;
+            border-top: none;
+            padding: 14px 16px;
+            vertical-align: top;
+        }
+        .llm-table tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+        .llm-table tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+        .llm-table tr:nth-child(even) td {
+            background-color: #faf7f2;
+        }
+        .llm-table tr:hover td {
+            background-color: #f3ede3;
+        }
+        .llm-name {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-weight: 700;
+            color: #4a2c2c;
+            white-space: nowrap;
+        }
+        .prompt-tag {
+            display: inline-block;
+            background: #ece8e0;
+            color: #4a2c2c;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .llm-quote {
+            background: #f7f3ec;
+            border-left: 3px solid #b8860b;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin: 10px 0;
+            color: #3a3a3a;
+        }
+        .llm-quote em {
+            color: #6b2e2e;
         }
     </style>
 </head>
@@ -229,256 +344,796 @@
 
 <!-- ===== NAVIGATION ===== -->
 <div class="navbar">
-    <a href="index.html">🏠 Homepage</a>
+    <a href="index.html">Homepage</a>
     <a href="Lola.html">Daria</a>
     <a href="iuliia.html">Iuliia</a>
-    <a href="Marina.html">Marina</a>
-    <a href="report.html">📄 Report</a>
+    <a href="Marina.html" class="active">Marina</a>
+    <a href="report.html">Report</a>
 </div>
 
-<!-- ===== MAIN CONTENT ===== -->
-<div class="content">
+<h1>Madonna of Kazan</h1>
 
-    <h1> Portrait of Ignazio Fumagalli </h1>
+<div class="comparison-box">
+    <div>
+        <img class="icon-img" src="https://www.datocms-assets.com/103094/1688662358-17-1-icon-kazan.jpg?auto=format%2Ccompress&cs=srgb&max-w=800" alt="Icon of the Madonna of Kazan with Miracles">
+    </div>
+</div>
 
-    
-    <section>
-        <h2>1. Portrait Overview</h2>
-        <div class="event-meta">
-            <p><strong>Karl Brjullov – Portrait of Ignazio Fumagalli</strong></p>
-            <p>The <strong>Portrait of Ignazio Fumagalli</strong> is a painting by the Russian artist <strong>Karl Bryullov</strong> (1799–1852), whose name is also transliterated as Brjullov or Briullov.</p>
-            <p>Bryullov is regarded as one of the most important Russian painters of the first half of the nineteenth century and a key figure in the transition from Russian neoclassicism to romanticism. His best-known work, <em>The Last Day of Pompeii</em>, established Bryullov as one of the finest European painters of his day. Beyond his monumental history paintings, much of his lasting reputation rests on his portraits, in which he combined romantic expressiveness with sharp psychological insight. He created this portrait during the years he spent working in Italy.</p>
-            <p>The sitter, <strong>Ignazio Fumagalli</strong> (1778–1842), was an Italian painter and engraver. He was born in Milan, studied at the Accademia di Brera, and served as its Secretary until his death. He also held the Chair of Aesthetics and worked as an art critic for the literary magazine <em>Biblioteca Italiana</em>. As a long-serving and influential figure at the Brera Academy, he was a natural and prestigious subject for a portrait.</p>
-            <p>The painting is kept in Milan, in the collection of the <strong>Accademia di Belle Arti di Brera</strong> (the Brera Academy), housed within the same complex as the famous Pinacoteca di Brera.</p>
-        </div>
-    </section>
+<p>The selected cultural heritage object is the icon Madonna of Kazan, with Miracles, dating from the second quarter of the 18th century and originating from the Moscow area. The icon belongs to the collection of the Museo delle Icone Russe in Palazzo Pitti, Florence. Its central image represents the Madonna with Child, while the surrounding panels depict a sequence of narrative episodes, including the apparitions of the Virgin to Matrona, the discovery and veneration of the icon, its procession to the cathedral in Kazan, and a series of miraculous healings.</p>
 
-<img src="brullov.jpg" alt="brullov" width="1000" height="600">
+<h2>1. Searching for the cultural heritage object in ArCo</h2>
 
-    <section>
-        <h2>2. Methodology Steps</h2>
-        <ul>
-            <li><strong>Step 1</strong> – SPARQL query to find the portrait in the database.</li>
-            <li><strong>Step 2</strong> – Find missing information.</li>
-            <li><strong>Step 3</strong> – Use LLMs to fill in the gaps in ArCo database.</li>
-            <li><strong>Step 4</strong> – Use LLMs to enrich the database.</li>
-        </ul>
-    </section>
+<p>The first step was to identify the selected icon in the ArCo knowledge graph. It took 2 SPARQL queries narrow the search.</p>
 
-
-    <section>
-        <h2>3. SPARQL Query & Results</h2>
-
-        <h3>Query</h3>
-        <div class="code-block">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
-PREFIX arco-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt;
-PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+<div class="query-card">
+    <span class="query-label">Query 1</span>
+    <div class="code-block">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
 PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 
-SELECT DISTINCT ?bene ?nome ?autore
+SELECT DISTINCT ?object ?label
 WHERE {
-  ?bene rdf:type/rdfs:subClassOf* arco:CulturalProperty ;
-        rdfs:label ?nome ;
-        arco-cd:hasAuthor ?ag .
-  ?ag rdfs:label ?autore .
-  FILTER(CONTAINS(LCASE(STR(?autore)), "brjullov"))
+  {
+    ?object a arco:HistoricOrArtisticProperty ;
+             rdfs:label ?label .
+  }
+  UNION
+  {
+    ?object a arco:HistoricOrArtisticProperty ;
+             arco:title ?label .
+  }
+
+  OPTIONAL {
+    ?object arco:uniqueIdentifier ?identifier .
+  }
+
+  FILTER(
+    REGEX(STR(?label), "Madre di Dio di Kazan", "i")
+    ||
+    REGEX(STR(?label), "Kazan", "i")
+  )
 }
-LIMIT 100</div>
+ORDER BY ?label
+LIMIT 20</div>
+</div>
 
-        <h3>Results</h3>
-        <ul class="link-list">
-            <li><a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988" target="_blank" rel="noopener noreferrer">🔗 ArCo Resource: 0300157988</a></li>
-        </ul>
+<p>results:</p>
 
-        <div class="summary-box">
-            <p><strong>Information Found in ArCo:</strong></p>
-            <ul>
-                <li><strong>@it / @en:</strong> Labels available</li>
-                <li><strong>dc:date:</strong> 1800-1845 — <span class="badge">no exact year</span></li>
-                <li><strong>a-cd:historicalInformation:</strong> Depositato nel 1979, 28 VI (valore 15.000) n. 3. La scheda cartacea annota un restauro del quale non fornisce informazioni.</li>
-                <li><strong>core:description:</strong> Dipinto raffigurante il ritratto di <span style="color:#8b1a1a; font-weight:bold;">Igazio</span> Fumagalli — <span class="badge">TYPO</span></li>
-            </ul>
-        </div>
-    </section>
+<div class="query-card">
+    <span class="query-label">Query 2</span>
+    <div class="code-block">PREFIX arco: &lt;https://w3id.org/arco/ontology/arco/&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
 
-    <section>
-        <h2>4. LLM Comparison</h2>
-        <p>Using ChatGPT and Claude to find missing information (zero-shot prompting).</p>
-
-        <div class="comparison-box">
-            <div>
-                <h4 style="margin-top:0;"> ChatGPT</h4>
-                <p><strong>Prompt:</strong> <em>"Tell me about the portrait of Fumagalli by Karl Brjullov."</em></p>
-                <ul>
-                    <li>Bust-length image, three-quarter pose</li>
-                    <li>Dark coat, waistcoat, white cravat</li>
-                    <li>Psychological presence and subtle realism</li>
-                    <li>Romantic sensitivity and elegant simplicity</li>
-                </ul>
-                <p style="font-size:0.9rem; color:#5a4f44;"> Too much unnecessary information, no specific data needed.</p>
-            </div>
-            <div>
-                <h4 style="margin-top:0;"> Claude</h4>
-                <p><strong>Prompt:</strong> <em>"Tell me about the portrait of Fumagalli by Karl Brjullov."</em></p>
-                <ul>
-                    <li>Oil on canvas measuring <strong>72 × 57 cm</strong></li>
-                    <li>Held at Accademia di Belle Arti di Brera</li>
-                    <li>Fits into Bryullov's Italian period</li>
-                    <li>Transition from neoclassicism to romanticism</li>
-                </ul>
-                <p style="font-size:0.9rem; color:#5a4f44;"> Got exact measurements but no other information.</p>
-            </div>
-        </div>
-    </section>
-
-
-    <section>
-        <h2>5. Follow-up Questions & Results</h2>
-
-        <h3>Question: Can you find the exact year the portrait was created?</h3>
-
-        <div class="comparison-box">
-            <div>
-                <h4 style="margin-top:0;"> ChatGPT</h4>
-                <p><strong>Answer:</strong> Yes — <strong>1834</strong></p>
-                <ul>
-                    <li>Italian Wikipedia states executed in 1834</li>
-                    <li>Treccani encyclopedia confirms "executed in 1834 by the Russian P. Brjullov"</li>
-                    <li>Historical context: Fumagalli praised <em>The Last Day of Pompeii</em> in Milan in 1833</li>
-                </ul>
-                <p style="font-size:0.9rem;"> Sources: <a href="https://it.wikipedia.org/wiki/Ignazio_Fumagalli" target="_blank" rel="noopener noreferrer">Wikipedia</a>, <a href="https://www.treccani.it/enciclopedia/michelangelo-fumagalli_%28Dizionario-Biografico%29/" target="_blank" rel="noopener noreferrer">Treccani</a></p>
-            </div>
-            <div>
-                <h4 style="margin-top:0;"> Claude</h4>
-                <p><strong>Answer:</strong> Yes — <strong>1834</strong></p>
-                <ul>
-                    <li>According to Pinacoteca di Brera's records</li>
-                    <li>Biographical context: Fumagalli served as Secretary from 1817 until his death</li>
-                    <li>Bryullov active in Italy through 1835</li>
-                </ul>
-                <p style="font-size:0.9rem;"> Source: print-collection catalog citing Brera collection</p>
-            </div>
-        </div>
-
-        <div class="summary-box">
-            <p><strong>Conclusion:</strong> Both ChatGPT and Claude give exact information and sources. The best-supported date is <strong>1834</strong>.</p>
-        </div>
-
-        <h3>Question: Help me find any information about restorations of the painting</h3>
-
-        <div class="comparison-box">
-            <div>
-                <h4 style="margin-top:0;"> ChatGPT</h4>
-                <p>"I searched specifically for restoration records of the Portrait of Ignazio (Ignatius) Fumagalli by Karl Bryullov, and the results are surprisingly sparse."</p>
-            </div>
-            <div>
-                <h4 style="margin-top:0;"> Claude</h4>
-                <p>"I haven't been able to find any specific documented restoration or conservation history for this particular painting."</p>
-            </div>
-        </div>
-
-        <div class="summary-box">
-            <p><strong> Both ChatGPT and Claude</strong> could not find any restoration information. There is no available data on the internet.</p>
-        </div>
-    </section>
-
-    <!-- ===== SECTION 6: RDF ENRICHMENT ===== -->
-    <section>
-        <h2>6. RDF Enrichment</h2>
-        <p>Transforming the found information into RDF format to add to the ArCo database.</p>
-
-        <h3>6.1 Creation Date (dc:date)</h3>
-        <div class="code-block">@prefix dc:  &lt;http://purl.org/dc/elements/1.1/&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-
-&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988&gt;
-    dc:date "1834"^^xsd:gYear .</div>
-
-        <h3>6.2 Description Correction (Typo Fix)</h3>
-
-        <div class="summary-box">
-            <p><strong>❌ Original:</strong> Dipinto raffigurante il ritratto di <span style="color:#8b1a1a; font-weight:bold;">Igazio</span> Fumagalli</p>
-            <p><strong>✅ Corrected:</strong> Dipinto raffigurante il ritratto di <span style="color:#2d6a2d; font-weight:bold;">Ignazio</span> Fumagalli</p>
-        </div>
-
-        <h4>Option 1: Simple Triple Addition</h4>
-        <div class="code-block">@prefix core: &lt;https://w3id.org/arco/ontology/core/&gt; .
-
-# Replace:
-# "Dipinto raffigurante il ritratto di Igazio Fumagalli"@it
-
-&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988&gt;
-    core:description "Dipinto raffigurante il ritratto di Ignazio Fumagalli"@it .</div>
-
-        <h4>Option 2: SPARQL Update (DELETE/INSERT) — Recommended</h4>
-        <div class="code-block">PREFIX core: &lt;https://w3id.org/arco/ontology/core/&gt;
-
-DELETE { ?cp core:description ?old }
-INSERT { ?cp core:description ?new }
+SELECT DISTINCT ?object ?label
 WHERE {
-  BIND(&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988&gt; AS ?cp)
-  ?cp core:description ?old .
-  FILTER(CONTAINS(STR(?old), "Igazio Fumagalli"))
-  BIND(REPLACE(STR(?old), "Igazio", "Ignazio") AS ?newStr)
-  BIND(IF(LANG(?old) != "", STRLANG(?newStr, LANG(?old)), ?newStr) AS ?new)
-}</div>
+  ?object a arco:HistoricOrArtisticProperty ;
+           rdfs:label ?label .
 
-        <div class="summary-box">
-            <p><strong> Important Note:</strong> This isn't an "enrichment," but a <strong>correction</strong> to an existing value. Simply adding triplets (as with dimensions) won't work. If you simply append the correct string, the column will end up with two descriptions—the old one with the typo and the new one. Therefore, a <strong>SPARQL Update DELETE/INSERT operation</strong> is needed.</p>
-            <p><strong> ArCo Resource:</strong> <a href="https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988" target="_blank" rel="noopener noreferrer">https://w3id.org/arco/resource/HistoricOrArtisticProperty/0300157988</a></p>
-            <p><em>Note: The ArCo endpoint returns a 303 status (redirect), which is normal for linked data resources. You can access the RDF/XML or Turtle representation by content negotiation.</em></p>
-        </div>
-    </section>
+  OPTIONAL {
+    ?object arco:comment ?comment .
+  }
 
-    <!-- ===== SECTION 7: SPREADSHEET ===== -->
-    <section>
-        <h2> 7. Project Spreadsheet Data</h2>
-        <p>Structured data from the KE4H project spreadsheet.</p>
+  FILTER(
+    REGEX(STR(?label), "Kazan", "i")
+    &amp;&amp;
+    (
+      REGEX(STR(?label), "icona", "i")
+      ||
+      REGEX(STR(?comment), "icona", "i")
+    )
+  )
+}
+ORDER BY ?label
+LIMIT 20</div>
+</div>
 
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Step</th>
-                        <th>Action</th>
-                        <th>Description</th>
-                        <th>Results</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Step 1</strong></td>
-                        <td>SPARQL Query</td>
-                        <td>Find portrait in ArCo using filter for "brjullov"</td>
-                        <td>✅ Resource 0300157988 found</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Step 2</strong></td>
-                        <td>Identify Missing Info</td>
-                        <td>Check what information is missing</td>
-                        <td>❌ No exact date (1800-1845)<br>❌ Typo: "Igazio"</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Step 3</strong></td>
-                        <td>LLM Query (ChatGPT)</td>
-                        <td>Ask for missing information</td>
-                        <td>✅ Date: 1834<br>⚠️ Too much context</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Step 3</strong></td>
-                        <td>LLM Query (Claude)</td>
-                        <td>Ask for missing information</td>
-                        <td>✅ Date: 1834<br>✅ Measurements: 72 × 57 cm</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Step 4</strong></td>
-                        <td>RDF Enrichment</td>
-                        <td>Add dc:date and correct description</td>
-                        <td>✅ dc:date "1834"<br>✅ core:description corrected</td>
-                    </tr>
-                </tbody>
-            </table>
-      
+<p>results:</p>
+
+<h2>2. Identifying gaps</h2>
+
+<p>Although ArCo identifies the general subject of the artwork as “Madonna con Bambino/episodi di miracoli” and provides an Iconclass code, it does not describe or semantically structure the individual narrative episodes depicted on the icon. The existing subject, “Madonna con Bambino/ episodi di miracoli”, gives only a general description of the icon's content and no description of the scenes of miracles depicted on the icon.</p>
+
+<p>After finding the object, we examined its RDF properties and related resources. We focused mainly on the hasSubject property and its Subject resource. The existing subject, “Madonna con Bambino/ episodi di miracoli”, gives only a general description of the icon's content. This gives an opportunity to enrich the existing data using the Subject structure already available in ArCo.</p>
+
+<h2>3. Using an LLM</h2>
+
+<p>First, I need to find information on each scene using LLMs (ChatGPT and Perplexity). I tested three prompting techniques: zero-shot, few-shot, and chain-of-thought, then compared the results.</p>
+
+<h3>Zero-shot prompting</h3>
+
+<div class="query-card">
+    <span class="query-label">Prompt</span>
+    <div class="code-block-light"><em>Tell me about the scenes depicted on the icon of the Kazan Mother of God and certain miracles</em></div>
+</div>
+
+<h4>ChatGPT</h4>
+
+<div class="llm-quote">
+    If you mean the Uffizi icon “Kazan Mother of God and certain miracles wrought by the icon” (Inv. 1890 no. 9339), the scenes around the central image form a narrative cycle. The Uffizi description says there are 20 oval scenes, arranged in horizontal registers and read from left to right, from top to bottom.<br><br>
+    The cycle can be divided into four groups:<br><br>
+    <strong>The apparitions to Matrona and discovery of the icon — 6 scenes</strong><br>
+    According to the tradition represented here, the Virgin Mary repeatedly appeared to a girl named Matrona, directing her to the place where the icon had been hidden. The story culminates in the miraculous discovery of the icon among the ashes of a house destroyed by fire in Kazan in 1579.<br><br>
+    <strong>Transfer of the icon to the cathedral in Kazan — 3 scenes</strong><br>
+    These episodes depict the solemn transfer of the newly discovered miraculous image to a cathedral in Kazan, establishing it as an object of public veneration.<br><br>
+    <strong>Miracles and healings — 10 scenes</strong><br>
+    The largest part of the cycle consists of episodes showing miraculous healings attributed to the icon. The Uffizi specifically notes that the icon became famous for its thaumaturgic powers, particularly healings from blindness.<br><br>
+    <strong>Transfer of the icon to Moscow — final scene</strong><br>
+    The last episode depicts the transfer of the sacred image from Kazan to Moscow, marking the beginning of its association with Moscow and, subsequently, with the protection of Russia.<br><br>
+    <strong>Why this is useful for your ArCo project</strong><br>
+    This is actually a very good example of information that can be enriched through an LLM, because ArCo's record identifies the subject rather generally as: Madonna con Bambino / episodi di miracoli and says that the icon is surrounded by twenty scenes depicting the discovery of the relic, miracles, and its transfer from Kazan to Moscow.<br><br>
+    But the Uffizi description provides a much more structured narrative breakdown: 6 discovery scenes + 3 transfer scenes in Kazan + 10 healing miracles + 1 transfer to Moscow. That gives you a concrete example of information that can potentially be transformed into structured knowledge about the artwork rather than simply adding a longer textual description.<br><br>
+    One important point: I would not claim that ArCo completely lacks information about the scenes. It does contain a general statement about the twenty scenes. The stronger argument for your project is that the individual narrative episodes are not represented at the same level of granularity.<br><br>
+    If your project requires you to demonstrate a specific information gap in ArCo, I can next help you formulate exactly what ArCo contains vs. what the Uffizi catalogue contains, and turn that into a defensible KG/LLM enrichment task.
+</div>
+
+<h4>Perplexity</h4>
+
+<div class="llm-quote">
+    The “Kazan Mother of God and certain miracles” icon is a classic Russian “icon with akathist/miracle border”: in the centre is the familiar Kazan image of the Virgin and Child, and around it, in a series of small scenes, are episodes from the icon’s discovery and the miracles attributed to it.<br><br>
+    <strong>Central image: the Kazan Mother of God</strong><br>
+    In the middle of the panel you see the standard Kazan type of the Theotokos:<br><br>
+    The Mother of God is shown from the chest up, head inclined toward the Child.<br>
+    Christ Emmanuel is depicted to the waist, facing forward, with His right hand raised in blessing and the left hand hidden under His garment.<br>
+    Mary’s hands are not shown; her gaze is directed toward the viewer rather than only at her Son, combining tenderness with a grave, contemplative expression.<br><br>
+    This central image is the “wonderworking” icon found in Kazan in 1579 after apparitions to a young girl, Matrona (Matryona).<br><br>
+    <strong>Narrative order of the border scenes</strong><br>
+    The surrounding scenes are arranged in horizontal registers, read from top to bottom and from left to right. On many examples (such as the Uffizi and Murom versions), there are about twenty miracle and history panels.<br><br>
+    They can be grouped into four main cycles:<br><br>
+    <strong>1. Apparitions and discovery of the icon (first six scenes)</strong><br>
+    These episodes tell how the icon came to be found:<br>
+    The Virgin appears in dreams to the girl Matrona, telling her where the icon is buried.<br>
+    Matrona reports the vision to adults/church authorities, who initially do not believe her.<br>
+    Further apparitions urge her to keep searching.<br>
+    Matrona and others dig at the indicated place in Kazan.<br>
+    The icon is discovered buried in the earth, often shown being lifted from the ground.<br>
+    This part emphasizes the icon’s “apparition” character: it reveals itself through visions rather than being simply painted and installed.<br><br>
+    <strong>2. Transfer of the icon to the cathedral in Kazan (next three scenes)</strong><br>
+    After its discovery, the next set of panels usually shows:<br>
+    A procession carrying the icon from the place of discovery toward the church.<br>
+    The entry of the icon into the cathedral in Kazan.<br>
+    Its installation in the church, often with clergy and people gathered around.<br>
+    These scenes mark the official recognition of the icon and the beginning of public veneration.<br><br>
+    <strong>3. Miracles of healing and protection (about ten scenes)</strong><br>
+    The largest group of panels depicts specific miracles attributed to the Kazan icon, especially healings. Common types include:<br><br>
+    Healing of the blind:<br>
+    A man named Joseph, blind for three years, regains his sight during or after a procession with the icon.<br>
+    Another blind man, Niketas, is healed in the cathedral itself.<br>
+    A blind child begins to see after his mother prays before the icon; he recognizes his mother’s face and can catch an apple offered to him.<br><br>
+    Healing of the paralyzed or crippled:<br>
+    A boy named Isaac, paralyzed for almost three years, is strengthened, stands up, and walks with sticks to the monastery to venerate the icon.<br>
+    A noblewoman (the wife of a boyar’s son) with a severe leg disease is brought to the icon; during the service she is able to stand and walk home unaided.<br><br>
+    Other healings and interventions:<br>
+    Various panels show sick people being brought on stretchers or supported by relatives, then standing or walking after prayer before the icon.<br>
+    Some scenes may depict deliverance from other illnesses, dangers, or misfortunes, following the local tradition of the particular icon.<br><br>
+    These miracle scenes are not generic; they usually include identifying details (names, specific ailments, settings like the cathedral or monastery) that tie them to the Kazan tradition.<br><br>
+    <strong>4. Transfer of the icon to Moscow (final scene)</strong><br>
+    The last panel often shows:<br>
+    The solemn transfer of the Virgin’s image from Kazan to Moscow, reflecting the icon’s growing national significance.<br>
+    This final episode links the local Kazan story to the broader history of Russia, where the Kazan icon became one of the most revered national palladia.<br><br>
+    <strong>Why these scenes matter</strong><br>
+    Together, the border scenes turn the icon into a visual “chronicle”:<br>
+    They narrate the icon’s origin (apparitions and discovery).<br>
+    They document its early cult (processions and installation).<br>
+    They testify to its miraculous power (healings, especially of eye diseases and paralysis).<br>
+    They situate it in Russian history (transfer to Moscow, later national veneration).<br><br>
+    For believers, reading these scenes is a form of praying the icon’s history and recalling concrete examples of divine help granted through the Kazan Mother of God.<br><br>
+    If you’d like, I can outline how to “read” a specific museum example (e.g., the Uffizi or Murom icon) scene by scene, or help you prepare a short multilingual description of these panels for an exhibition or educational post.
+</div>
+
+<p>СhatGPT gives important information. However, it comments how good this data could be for the project. In previous chat I asked chatGPT is the selected object suitable for the project. Then I started new chat to seek lacking information, and ChatGPT claims that different chats are not connected to each other, so it shouldn’t have known about the project. It shows that the results of the search depend on your previous work with the LLM.</p>
+
+<p>Perplexity confuses giving lots of information about different icons instead of clarifying that there are different art pieces with similar titles. Fortunately, there are links, that can help to find it out and to focus on information about the icon in Uffizi.</p>
+
+<h3>2. Few-shot prompting</h3>
+
+<div class="query-card">
+    <span class="query-label">Prompt</span>
+    <div class="code-block-light">Identify the individual narrative scenes depicted in an icon based on its historical and iconographic description.<br><br>
+    Example:<br>
+    Source description:<br>
+    "The icon represents the Dormition of the Mother of God. The central scene depicts the Dormition, while the surrounding panels show different episodes connected with the life of the Virgin Mary, including the Annunciation, the Nativity of Christ, the Presentation of Christ in the Temple, and the Ascension."<br>
+    Expected output:<br>
+    Annunciation — the Archangel Gabriel announces the birth of Christ to Mary.<br>
+    Nativity of Christ — Mary gives birth to Christ.<br>
+    Presentation of Christ in the Temple — the infant Christ is presented at the Temple.<br>
+    Ascension — Christ ascends into heaven.<br><br>
+    Now analyze the following description of the icon of the Kazan Mother of God.<br>
+    Identify the individual narrative scenes and miracles depicted around the central image. For each scene, provide:<br>
+    Scene or episode<br>
+    Main figures involved<br>
+    Brief description of the event<br>
+    Do not add information that is not supported by the source description.</div>
+</div>
+
+<h4>ChatGPT</h4>
+
+<div class="llm-quote">
+    Based strictly on the description provided for the Kazan Mother of God icon, the individual narrative scenes can be identified as follows:<br><br>
+    The Apparition of the Mother of God to Matrona<br>
+    Main figures: The Mother of God; Matrona<br>
+    Event: The Mother of God appears to Matrona and directs her to the place where the icon is hidden.<br><br>
+    The Discovery of the Icon<br>
+    Main figures: Matrona<br>
+    Event: Matrona discovers the icon in the place indicated by the Mother of God, among the ashes of a house destroyed by fire.<br><br>
+    The Transfer of the Icon to the Cathedral in Kazan<br>
+    Main figures: Clergy and participants in the procession; the icon<br>
+    Event: The newly discovered icon is solemnly transferred to a cathedral in Kazan.<br><br>
+    Miraculous Healing — Episode 1<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 2<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 3<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 4<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 5<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 6<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 7<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 8<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 9<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Miraculous Healing — Episode 10<br>
+    Main figures: A person in need of healing; the icon<br>
+    Event: A healing is attributed to the miraculous power of the icon.<br><br>
+    Transfer of the Icon from Kazan to Moscow<br>
+    Main figures: Participants in the transfer; the icon<br>
+    Event: The icon is transferred from Kazan to Moscow.<br><br>
+    Important limitation: the source description identifies ten miraculous healing episodes, but does not provide enough information to distinguish the individual miracles or name the people involved. Therefore, specifying particular illnesses, names, or circumstances would introduce information not supported by the source.
+</div>
+
+<h4>Perplexity</h4>
+
+<div class="llm-quote">
+    Based on the source description from the Uffizi icon of the “Kazan Mother of God and certain miracles wrought by the icon,” the individual narrative scenes around the central image can be identified as follows:<br><br>
+    Apparitions and rediscovery of the icon (first six scenes)<br><br>
+    Apparition of the Virgin to Matrona (first vision)<br>
+    Main figures: the Virgin Mary; the young girl Matrona.<br>
+    Event: the Virgin Mary appears to Matrona in a vision and indicates that an icon is buried in the ruins of a burnt house.<br><br>
+    Apparition of the Virgin to Matrona (repeated visions)<br>
+    Main figures: the Virgin Mary; Matrona.<br>
+    Event: the Virgin appears to Matrona repeatedly, confirming the location of the hidden icon.<br><br>
+    Matrona reports the vision<br>
+    Main figures: Matrona; her mother and/or local clergy and city officials.<br>
+    Event: Matrona tells others about the apparitions and the place where the icon is to be found.<br><br>
+    Digging at the indicated place<br>
+    Main figures: Matrona; her mother; other helpers.<br>
+    Event: Matrona and her mother begin to dig at the spot shown by the Virgin.<br><br>
+    Rediscovery of the icon<br>
+    Main figures: Matrona; her mother; possibly clergy or townspeople.<br>
+    Event: the icon is unearthed from the ground in the ruins of the burnt house.<br><br>
+    Initial veneration at the place of discovery<br>
+    Main figures: Matrona; her mother; clergy; townspeople.<br>
+    Event: the newly found icon becomes an object of popular devotion at the site of its rediscovery.<br><br>
+    Transfer of the icon to the cathedral in Kazan (three scenes)<br><br>
+    Procession from the place of discovery to a church<br>
+    Main figures: clergy; townspeople; bearers of the icon.<br>
+    Event: the icon is carried in procession from the discovery site toward a church.<br><br>
+    Entry of the icon into the cathedral in Kazan<br>
+    Main figures: clergy; faithful; the icon.<br>
+    Event: the icon is brought into the cathedral in Kazan.<br><br>
+    Installation of the icon in the cathedral<br>
+    Main figures: clergy; faithful; the icon.<br>
+    Event: the sacred tablet is formally placed in the cathedral for veneration.<br><br>
+    Miracles of healing (ten episodes)<br><br>
+    The source specifies “ten episodes of prodigious healing by the sacred tablet,” but does not list each miracle individually. Based only on what the description supports, these can be identified generically as:<br><br>
+    First healing miracle<br>
+    Main figures: a sick person (unspecified); the icon of the Mother of God.<br>
+    Event: a person is miraculously healed through prayer before the icon.<br><br>
+    Second healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: another prodigious healing occurs through the icon.<br><br>
+    Third healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a further healing is wrought by the sacred tablet.<br><br>
+    Fourth healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a fourth prodigious healing takes place.<br><br>
+    Fifth healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a fifth miraculous cure is granted.<br><br>
+    Sixth healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a sixth healing occurs through the icon’s intercession.<br><br>
+    Seventh healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a seventh prodigious healing is recorded.<br><br>
+    Eighth healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: an eighth miraculous healing takes place.<br><br>
+    Ninth healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a ninth healing is wrought by the sacred tablet.<br><br>
+    Tenth healing miracle<br>
+    Main figures: a sick person (unspecified); the icon.<br>
+    Event: a tenth prodigious healing occurs.<br><br>
+    Transfer of the icon to Moscow (final scene)<br><br>
+    Transfer of the Virgin’s image to Moscow<br>
+    Main figures: clergy; officials; bearers of the icon; the icon.<br>
+    Event: the icon (or its image) is transferred from Kazan to Moscow.<br><br>
+    These twenty peripheral scenes, read in horizontal registers from top to bottom and left to right, narrate the apparitions to Matrona, the rediscovery of the icon, its transfer and installation in Kazan, ten specific (but unnamed in this source) healing miracles, and finally its transfer to Moscow.
+</div>
+
+<p>ChatGPT provides only 14 episodes.</p>
+
+<p>Perplexity fixes its previous mistake and gives only needed data. The answer contains all 20 scenes and also tells how to read the icon.</p>
+
+<h3>3. Chain of thought</h3>
+
+<div class="query-card">
+    <span class="query-label">Prompt</span>
+    <div class="code-block-light">Analyze the icon of the Kazan Mother of God step by step.<br>
+    Step 1: Identify the central image and determine what narrative cycle or story the surrounding scenes belong to.<br>
+    Step 2: Determine how many individual scenes or episodes are represented around the central image.<br>
+    Step 3: For each scene, identify the main event and the people or figures involved.<br>
+    Step 4: Distinguish between scenes depicting the discovery and history of the icon and scenes depicting miracles.<br>
+    Step 5: Present the final results as a structured list containing:<br>
+    Scene number<br>
+    Scene/episode<br>
+    People or figures involved<br>
+    Brief description of the event<br>
+    Category: discovery/history or miracle<br>
+    Use only information supported by the source text provided. If the information for a scene is uncertain or missing, explicitly state this instead of inventing details.</div>
+</div>
+
+<h4>ChatGPT</h4>
+
+<div class="llm-quote">
+    Yes. Using the Uffizi description as the source, the icon can be analyzed quite cleanly. The key point is that the source explicitly states that the surrounding scenes form a 20-episode narrative cycle, read horizontally from top to bottom and left to right.<br><br>
+    <strong>Step 1 — Central image and narrative cycle</strong><br>
+    The central image is the Mother of God with the Child Jesus. The Uffizi identifies it as a replica of the miraculous Kazan icon, traditionally discovered in Kazan in 1579. The surrounding scenes narrate the story of the icon itself: its apparitions and discovery, its transfer within Kazan, miraculous healings, and its eventual transfer to Moscow.<br><br>
+    <strong>Step 2 — Number of individual scenes</strong><br>
+    There are 20 surrounding scenes:<br>
+    6 scenes — apparitions of the Virgin to Matrona and discovery of the icon;<br>
+    3 scenes — transfer of the icon to the cathedral in Kazan;<br>
+    10 scenes — miraculous healings performed through the icon;<br>
+    1 scene — transfer of the icon to Moscow.<br><br>
+    <strong>Step 3–5 — Structured list</strong><br>
+    Because the source does not describe the visual content of each individual panel separately, it is important not to invent names for individual miracles or specific actions within the six discovery scenes. The source only gives the narrative groups. Therefore, the scenes that can be identified individually are presented with the information actually supplied by the source.<br><br>
+    (Table with scenes 1–20 follows in original answer — omitted here to preserve the raw textual form the author provided.)
+</div>
+
+<h4>Perplexity</h4>
+
+<div class="llm-quote">
+    <strong>Step 1: Central image and narrative cycle</strong><br>
+    Central image: The effigy (icon) of the Mother of God with her son Jesus — a replica of the icon miraculously unearthed in Kazan in 1579.<br>
+    Narrative cycle of surrounding scenes: The story of the apparitions of the Virgin to the girl Matrona, the rediscovery of the icon, its transfer and veneration in Kazan, a series of healing miracles attributed to it, and finally the transfer of the Virgin’s image to Moscow.<br><br>
+    <strong>Step 2: Number of surrounding scenes</strong><br>
+    The source explicitly states that the peripheral scenes are arranged in horizontal sections and consist of:<br>
+    6 episodes of apparitions and rediscovery<br>
+    3 scenes of transfer to the cathedral in Kazan<br>
+    10 episodes of prodigious healing<br>
+    1 final episode of transfer to Moscow<br>
+    Total: 6 + 3 + 10 + 1 = 20 individual scenes around the central image.<br><br>
+    <strong>Step 3–4: Scene-by-scene identification and distinction (history/discovery vs. miracles)</strong><br>
+    The source gives clear groupings but does not name each individual miracle or describe each scene in detail. Where details are not specified in the text, this is stated explicitly.<br><br>
+    Discovery and history scenes (Scenes 1–10 and 20)<br><br>
+    Scene 1<br>
+    Scene/episode: First apparition of the Virgin to Matrona<br>
+    People or figures involved: the Virgin Mary; the young girl Matrona<br>
+    Brief description: The Virgin Mary appears to Matrona and indicates the location where the icon is buried.<br>
+    Category: discovery/history<br><br>
+    Scene 2<br>
+    Scene/episode: Repeated apparitions to Matrona<br>
+    People or figures involved: the Virgin Mary; Matrona<br>
+    Brief description: The Virgin appears to Matrona repeatedly, confirming the place of the icon’s rediscovery.<br>
+    Category: discovery/history<br><br>
+    Scene 3<br>
+    Scene/episode: Matrona reports the visions<br>
+    People or figures involved: Matrona; (implied) her mother and/or clergy and city officials<br>
+    Brief description: Matrona tells others about the apparitions and the indicated location of the icon.<br>
+    Category: discovery/history<br><br>
+    Scene 4<br>
+    Scene/episode: Digging at the indicated place<br>
+    People or figures involved: Matrona; her mother; (implied) other helpers<br>
+    Brief description: Matrona and her mother begin to dig at the spot shown by the Virgin.<br>
+    Category: discovery/history<br><br>
+    Scene 5<br>
+    Scene/episode: Rediscovery of the icon<br>
+    People or figures involved: Matrona; her mother; (implied) others present<br>
+    Brief description: The icon is unearthed from the ruins of a burnt house.<br>
+    Category: discovery/history<br><br>
+    Scene 6<br>
+    Scene/episode: Initial popular devotion at the place of discovery<br>
+    People or figures involved: Matrona; (implied) townspeople and clergy<br>
+    Brief description: The newly found icon becomes an object of popular devotion at the site where it was rediscovered.<br>
+    Category: discovery/history<br><br>
+    Scene 7<br>
+    Scene/episode: Procession toward the cathedral in Kazan<br>
+    People or figures involved: clergy; townspeople; bearers of the icon<br>
+    Brief description: The icon is carried in procession from the place of discovery toward the cathedral.<br>
+    Category: discovery/history<br><br>
+    Scene 8<br>
+    Scene/episode: Entry of the icon into the cathedral in Kazan<br>
+    People or figures involved: clergy; faithful; the icon<br>
+    Brief description: The icon is brought into the cathedral in Kazan.<br>
+    Category: discovery/history<br><br>
+    Scene 9<br>
+    Scene/episode: Installation of the icon in the cathedral<br>
+    People or figures involved: clergy; faithful; the icon<br>
+    Brief description: The sacred tablet is formally placed in the cathedral for veneration.<br>
+    Category: discovery/history<br><br>
+    Scene 10<br>
+    Scene/episode: First prodigious healing (unspecified)<br>
+    People or figures involved: a sick person (not named); the icon of the Mother of God<br>
+    Brief description: A person is miraculously healed through prayer before the icon; the source does not specify who or what illness.<br>
+    Category: miracle<br><br>
+    Scenes 11–19<br>
+    Scene/episode: Second through ninth prodigious healings (unspecified)<br>
+    People or figures involved: sick persons (not named); the icon<br>
+    Brief description: Further episodes of prodigious healing by the sacred tablet; the source does not identify the individuals, ailments, or settings for these nine scenes.<br>
+    Category: miracle<br><br>
+    Scene 20<br>
+    Scene/episode: Transfer of the Virgin’s image to Moscow<br>
+    People or figures involved: clergy; officials; bearers of the icon; the icon<br>
+    Brief description: The icon (or its image) is transferred from Kazan to Moscow.<br>
+    Category: discovery/history<br><br>
+    Miracles scenes (Scenes 10–19)<br>
+    Scenes 10–19 together form the “ten episodes of prodigious healing by the sacred tablet.”<br>
+    For all ten healing scenes, the source confirms only that they are miracles of healing; it does not provide individual names, specific illnesses, or distinct narrative details for each episode.<br><br>
+    <strong>Step 5: Final structured list</strong><br><br>
+    Scene 1 — First apparition of the Virgin to Matrona<br>
+    People/figures: Virgin Mary; Matrona<br>
+    Event: The Virgin indicates where the icon is buried.<br>
+    Category: discovery/history<br><br>
+    Scene 2 — Repeated apparitions to Matrona<br>
+    People/figures: Virgin Mary; Matrona<br>
+    Event: The Virgin repeatedly confirms the location of the icon.<br>
+    Category: discovery/history<br><br>
+    Scene 3 — Matrona reports the visions<br>
+    People/figures: Matrona; (implied) mother/clergy/officials<br>
+    Event: Matrona tells others about the apparitions and the place of the icon.<br>
+    Category: discovery/history<br><br>
+    Scene 4 — Digging at the indicated place<br>
+    People/figures: Matrona; her mother; (implied) helpers<br>
+    Event: Matrona and her mother dig where the Virgin indicated.<br>
+    Category: discovery/history<br><br>
+    Scene 5 — Rediscovery of the icon<br>
+    People/figures: Matrona; her mother; (implied) others<br>
+    Event: The icon is unearthed from the ruins of a burnt house.<br>
+    Category: discovery/history<br><br>
+    Scene 6 — Initial devotion at the place of discovery<br>
+    People/figures: Matrona; (implied) townspeople/clergy<br>
+    Event: The newly found icon becomes an object of popular devotion at the discovery site.<br>
+    Category: discovery/history<br><br>
+    Scene 7 — Procession toward the cathedral in Kazan<br>
+    People/figures: clergy; townspeople; bearers of the icon<br>
+    Event: The icon is carried in procession to the cathedral.<br>
+    Category: discovery/history<br><br>
+    Scene 8 — Entry of the icon into the cathedral in Kazan<br>
+    People/figures: clergy; faithful; the icon<br>
+    Event: The icon is brought into the cathedral in Kazan.<br>
+    Category: discovery/history<br><br>
+    Scene 9 — Installation of the icon in the cathedral<br>
+    People/figures: clergy; faithful; the icon<br>
+    Event: The icon is formally placed in the cathedral for veneration.<br>
+    Category: discovery/history<br><br>
+    Scene 10 — First prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A person is miraculously healed through the icon; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 11 — Second prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: Another healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 12 — Third prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A further healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 13 — Fourth prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A fourth healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 14 — Fifth prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A fifth healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 15 — Sixth prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A sixth healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 16 — Seventh prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A seventh healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 17 — Eighth prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: An eighth healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 18 — Ninth prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A ninth healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 19 — Tenth prodigious healing (unspecified)<br>
+    People/figures: a sick person (unnamed); the icon<br>
+    Event: A tenth healing miracle; details not specified.<br>
+    Category: miracle<br><br>
+    Scene 20 — Transfer of the Virgin’s image to Moscow<br>
+    People/figures: clergy; officials; bearers of the icon; the icon<br>
+    Event: The icon (or its image) is transferred from Kazan to Moscow.<br>
+    Category: discovery/history<br><br>
+    Where the source does not name individuals or specify illnesses for the ten healing scenes, this uncertainty is explicit: the text only confirms that they are “ten episodes of prodigious healing by the sacred tablet.”
+</div>
+
+<p>ChatGPT gives commentaries helping to comprehand information and to imply it on the project.</p>
+
+<p>Perplexity gives a more detailed answer with all necessary information.</p>
+
+<p>In the end both LLMs give satisfactory answers, which proves that accurate results require detailed prompts.</p>
+
+<h2>4. Turning information into RDF format</h2>
+
+<p>ArCo represents the iconographic subject of the artwork through hasSubject, but it does not provide a dedicated class or property for representing individual narrative scenes depicted on a cultural property. The proposed enrichment preserves the existing ArCo subject description and adds more granular subjects representing the central image of the Madonna with Child and the twenty narrative scenes surrounding it.</p>
+
+<h3>In Italian:</h3>
+
+<div class="query-card">
+    <span class="query-label">RDF</span>
+    <div class="code-block">@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix kazan: &lt;https://example.org/kazan/&gt; .
+
+&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900742662&gt;
+
+    # Central subject
+    a-cd:hasSubject kazan:madonna-con-bambino ;
+
+    # Surrounding narrative scenes
+    a-cd:hasSubject kazan:scene-01 ;
+    a-cd:hasSubject kazan:scene-02 ;
+    a-cd:hasSubject kazan:scene-03 ;
+    a-cd:hasSubject kazan:scene-04 ;
+    a-cd:hasSubject kazan:scene-05 ;
+    a-cd:hasSubject kazan:scene-06 ;
+    a-cd:hasSubject kazan:scene-07 ;
+    a-cd:hasSubject kazan:scene-08 ;
+    a-cd:hasSubject kazan:scene-09 ;
+    a-cd:hasSubject kazan:scene-10 ;
+    a-cd:hasSubject kazan:scene-11 ;
+    a-cd:hasSubject kazan:scene-12 ;
+    a-cd:hasSubject kazan:scene-13 ;
+    a-cd:hasSubject kazan:scene-14 ;
+    a-cd:hasSubject kazan:scene-15 ;
+    a-cd:hasSubject kazan:scene-16 ;
+    a-cd:hasSubject kazan:scene-17 ;
+    a-cd:hasSubject kazan:scene-18 ;
+    a-cd:hasSubject kazan:scene-19 ;
+    a-cd:hasSubject kazan:scene-20 .
+
+
+# Central image
+
+kazan:madonna-con-bambino
+    a a-cd:Subject ;
+    rdfs:label "Madonna con Bambino"@it .
+
+
+# Narrative scenes
+
+kazan:scene-01
+    a a-cd:Subject ;
+    rdfs:label "Prima apparizione della Vergine a Matrona"@it .
+
+kazan:scene-02
+    a a-cd:Subject ;
+    rdfs:label "Ripetute apparizioni della Vergine a Matrona"@it .
+
+kazan:scene-03
+    a a-cd:Subject ;
+    rdfs:label "Matrona riferisce le visioni"@it .
+
+kazan:scene-04
+    a a-cd:Subject ;
+    rdfs:label "Scavo nel luogo indicato"@it .
+
+kazan:scene-05
+    a a-cd:Subject ;
+    rdfs:label "Ritrovamento dell'icona"@it .
+
+kazan:scene-06
+    a a-cd:Subject ;
+    rdfs:label "Prime manifestazioni di devozione nel luogo del ritrovamento"@it .
+
+kazan:scene-07
+    a a-cd:Subject ;
+    rdfs:label "Processione verso la cattedrale di Kazan'"@it .
+
+kazan:scene-08
+    a a-cd:Subject ;
+    rdfs:label "Ingresso dell'icona nella cattedrale di Kazan'"@it .
+
+kazan:scene-09
+    a a-cd:Subject ;
+    rdfs:label "Collocazione dell'icona nella cattedrale"@it .
+
+kazan:scene-10
+    a a-cd:Subject ;
+    rdfs:label "Prima guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-11
+    a a-cd:Subject ;
+    rdfs:label "Seconda guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-12
+    a a-cd:Subject ;
+    rdfs:label "Terza guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-13
+    a a-cd:Subject ;
+    rdfs:label "Quarta guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-14
+    a a-cd:Subject ;
+    rdfs:label "Quinta guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-15
+    a a-cd:Subject ;
+    rdfs:label "Sesta guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-16
+    a a-cd:Subject ;
+    rdfs:label "Settima guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-17
+    a a-cd:Subject ;
+    rdfs:label "Ottava guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-18
+    a a-cd:Subject ;
+    rdfs:label "Nona guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-19
+    a a-cd:Subject ;
+    rdfs:label "Decima guarigione prodigiosa (non specificata)"@it .
+
+kazan:scene-20
+    a a-cd:Subject ;
+    rdfs:label "Trasferimento dell'immagine della Vergine a Mosca"@it .</div>
+</div>
+
+<h3>In English:</h3>
+
+<div class="query-card">
+    <span class="query-label">RDF</span>
+    <div class="code-block">@prefix arco: &lt;https://w3id.org/arco/ontology/arco/&gt; .
+@prefix a-cd: &lt;https://w3id.org/arco/ontology/context-description/&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix kazan: &lt;https://example.org/kazan/&gt; .
+
+&lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900742662&gt;
+
+    # Central subject
+    a-cd:hasSubject kazan:madonna-with-child ;
+
+    # Surrounding narrative scenes
+    a-cd:hasSubject kazan:scene-01 ;
+    a-cd:hasSubject kazan:scene-02 ;
+    a-cd:hasSubject kazan:scene-03 ;
+    a-cd:hasSubject kazan:scene-04 ;
+    a-cd:hasSubject kazan:scene-05 ;
+    a-cd:hasSubject kazan:scene-06 ;
+    a-cd:hasSubject kazan:scene-07 ;
+    a-cd:hasSubject kazan:scene-08 ;
+    a-cd:hasSubject kazan:scene-09 ;
+    a-cd:hasSubject kazan:scene-10 ;
+    a-cd:hasSubject kazan:scene-11 ;
+    a-cd:hasSubject kazan:scene-12 ;
+    a-cd:hasSubject kazan:scene-13 ;
+    a-cd:hasSubject kazan:scene-14 ;
+    a-cd:hasSubject kazan:scene-15 ;
+    a-cd:hasSubject kazan:scene-16 ;
+    a-cd:hasSubject kazan:scene-17 ;
+    a-cd:hasSubject kazan:scene-18 ;
+    a-cd:hasSubject kazan:scene-19 ;
+    a-cd:hasSubject kazan:scene-20 .
+
+
+# Central image
+
+kazan:madonna-with-child
+    a a-cd:Subject ;
+    rdfs:label "Madonna with Child"@en .
+
+
+# Narrative scenes
+
+kazan:scene-01
+    a a-cd:Subject ;
+    rdfs:label "First apparition of the Virgin to Matrona"@en .
+
+kazan:scene-02
+    a a-cd:Subject ;
+    rdfs:label "Repeated apparitions of the Virgin to Matrona"@en .
+
+kazan:scene-03
+    a a-cd:Subject ;
+    rdfs:label "Matrona reports the visions"@en .
+
+kazan:scene-04
+    a a-cd:Subject ;
+    rdfs:label "Digging at the indicated place"@en .
+
+kazan:scene-05
+    a a-cd:Subject ;
+    rdfs:label "Rediscovery of the icon"@en .
+
+kazan:scene-06
+    a a-cd:Subject ;
+    rdfs:label "Initial devotion at the place of discovery"@en .
+
+kazan:scene-07
+    a a-cd:Subject ;
+    rdfs:label "Procession toward the cathedral in Kazan"@en .
+
+kazan:scene-08
+    a a-cd:Subject ;
+    rdfs:label "Entry of the icon into the cathedral in Kazan"@en .
+
+kazan:scene-09
+    a a-cd:Subject ;
+    rdfs:label "Installation of the icon in the cathedral"@en .
+
+kazan:scene-10
+    a a-cd:Subject ;
+    rdfs:label "First prodigious healing (unspecified)"@en .
+
+kazan:scene-11
+    a a-cd:Subject ;
+    rdfs:label "Second prodigious healing (unspecified)"@en .
+
+kazan:scene-12
+    a a-cd:Subject ;
+    rdfs:label "Third prodigious healing (unspecified)"@en .
+
+kazan:scene-13
+    a a-cd:Subject ;
+    rdfs:label "Fourth prodigious healing (unspecified)"@en .
+
+kazan:scene-14
+    a a-cd:Subject ;
+    rdfs:label "Fifth prodigious healing (unspecified)"@en .
+
+kazan:scene-15
+    a a-cd:Subject ;
+    rdfs:label "Sixth prodigious healing (unspecified)"@en .
+
+kazan:scene-16
+    a a-cd:Subject ;
+    rdfs:label "Seventh prodigious healing (unspecified)"@en .
+
+kazan:scene-17
+    a a-cd:Subject ;
+    rdfs:label "Eighth prodigious healing (unspecified)"@en .
+
+kazan:scene-18
+    a a-cd:Subject ;
+    rdfs:label "Ninth prodigious healing (unspecified)"@en .
+
+kazan:scene-19
+    a a-cd:Subject ;
+    rdfs:label "Tenth prodigious healing (unspecified)"@en .
+
+kazan:scene-20
+    a a-cd:Subject ;
+    rdfs:label "Transfer of the Virgin's image to Moscow"@en .</div>
+</div>
+
+<hr>
+
+
 
 </body>
 </html>
