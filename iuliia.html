@@ -665,6 +665,13 @@ SELECT ?relatedwork WHERE {
 &lt;https://w3id.org/arco/resource/HistoricOrArtisticProperty/0900281911&gt;
     cis:hasSite &lt;https://w3id.org/arco/resource/Site/d86fe78695b1a833f53ff7a82730ec69&gt; .</div>
 </div>
+    <h2>Conclusion</h2>
+
+<p>This project aimed to identify and address gaps in the ArCo knowledge graph concerning the two-panel Menologio icon. Through SPARQL exploration, two main gaps were discovered: the absence of a direct location link to Palazzo Pitti and the lack of a formal relationship connecting the two panels of the same artwork.</p>
+
+<p>Main challenges were evaluating the outputs of different large language models. When asked about the location of the Menologio icon, the models behaved differently depending on the prompting technique. In zero-shot prompting, both DeepSeek and Groq gave general answers, sometimes mentioning other famous Menologio icons instead of the specific one in Florence. With few-shot prompting, the answers became more accurate and correctly identified Palazzo Pitti and the Museum of Russian Icons. Chain-of-thought prompting produced the most detailed and structured responses, clearly explaining the institutional relationship between the Uffizi Galleries and Palazzo Pitti.</p>
+
+<p>These differences highlighted the importance of prompt engineering and the need to carefully verify LLM outputs against reliable sources, in my case, officialsite of the exhibition. By combining SPARQL queries with multiple prompting strategies, it was possible to identify the missing information and propose RDF triples to enrich the knowledge graph.</p>
 
 <hr>
 
